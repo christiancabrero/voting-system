@@ -21,13 +21,33 @@
 
 ---
 
+## 📸 Visual Showcase (Both Editions)
+
+### 🌟 1. WordPress Plugin Edition (`v3.4.0`)
+| View | Description | Screenshot |
+| :--- | :--- | :--- |
+| **01. Frontend Open (Simple Mode)** | 1 global vote available per voter, responsive grid | ![WP Frontend Open](screenshots/01-wp-frontend-open-simple-mode.png) |
+| **02. Post-Vote Exhausted State** | Voted candidate marked as "✓ Voted", remaining buttons locked | ![WP Vote Cast](screenshots/02-wp-vote-cast-exhausted-state.png) |
+| **03. Closed Voting with Participants** | Status notice banner displayed while contestants remain visible | ![WP Voting Closed](screenshots/03-wp-voting-closed-participants-visible.png) |
+| **04. Admin Simple / Advanced Switch** | Interactive mode cards hiding complex category options | ![WP Admin Switcher](screenshots/04-wp-backend-simple-mode-switcher.png) |
+| **05. Cache Compatibility Guide** | In-admin performance and caching setup documentation | ![WP Cache Guide](screenshots/05-wp-backend-cache-compatibility-guide.png) |
+
+### ⚡ 2. Pure PHP High-Concurrency Edition (`v2.0.0`)
+| View | Description | Screenshot |
+| :--- | :--- | :--- |
+| **06. Standalone Public UI** | Lightweight reactive frontend with language switcher (EN/ES/CA) | ![Pure PHP Frontend](screenshots/06-pure-php-frontend-live.png) |
+| **07. Web Administration Console** | Live queue status, mode switcher, contestant ranking & audit log | ![Pure PHP Admin](screenshots/07-pure-php-admin-dashboard.png) |
+
+---
+
 ## 📦 Project Structure
 
 ```text
 voting-system/
+├── screenshots/               # Visual showcases for both editions
 ├── wordpress-plugin/          # WordPress Plugin Edition (v3.4.0)
 │   ├── assets/                # Admin & Frontend CSS/JS
-│   ├── screenshots/           # Anonymized UI captures
+│   ├── screenshots/           # WP anonymized UI captures
 │   ├── voting-system.php      # Main WordPress plugin entrypoint
 │   ├── README.md              # English documentation
 │   ├── README.es.md           # Spanish documentation

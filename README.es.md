@@ -21,10 +21,30 @@
 
 ---
 
+## 📸 Muestra Visual (Ambas Versiones)
+
+### 🌟 1. Edición Plugin para WordPress (`v3.4.0`)
+| Vista | Descripción | Captura de Pantalla |
+| :--- | :--- | :--- |
+| **01. Frontend Abierto (Modo Simple)** | 1 voto global disponible por votante, cuadrícula responsive | ![WP Frontend Abierto](screenshots/01-wp-frontend-open-simple-mode.png) |
+| **02. Estado tras Votar (Voto Agotado)** | Candidato marcado como "✓ Votado", botones restantes deshabilitados | ![WP Voto Emitido](screenshots/02-wp-vote-cast-exhausted-state.png) |
+| **03. Votaciones Cerradas con Participantes** | Banner de aviso visible mientras los participantes siguen expuestos | ![WP Votaciones Cerradas](screenshots/03-wp-voting-closed-participants-visible.png) |
+| **04. Switch Backend Modo Simple / Avanzado** | Tarjetas interactivas que ocultan opciones complejas de categoría | ![WP Switch Backend](screenshots/04-wp-backend-simple-mode-switcher.png) |
+| **05. Guía de Caché en el Backend** | Documentación integrada para configuración con plugins de caché | ![WP Guía de Caché](screenshots/05-wp-backend-cache-compatibility-guide.png) |
+
+### ⚡ 2. Edición PHP Puro de Alta Concurrencia (`v2.0.0`)
+| Vista | Descripción | Captura de Pantalla |
+| :--- | :--- | :--- |
+| **06. Frontend Público Standalone** | Interfaz reactiva ultraligera con selector de idioma (EN/ES/CA) | ![Pure PHP Frontend](screenshots/06-pure-php-frontend-live.png) |
+| **07. Panel de Administración Web** | Estado de cola en tiempo real, switch de modo, ranking y auditoría | ![Pure PHP Admin](screenshots/07-pure-php-admin-dashboard.png) |
+
+---
+
 ## 📦 Estructura del Monorepo
 
 ```text
 voting-system/
+├── screenshots/               # Muestras visuales de ambas versiones
 ├── wordpress-plugin/          # Edición Plugin para WordPress (v3.4.0)
 │   ├── assets/                # CSS y JS de administración y frontend
 │   ├── screenshots/           # Capturas de pantalla anonimizadas

@@ -4,6 +4,15 @@ Ultra-fast, standalone voting system written in pure PHP (no framework dependenc
 
 ---
 
+## 📸 Visual Showcase
+
+| View | Screenshot |
+| :--- | :--- |
+| **01. Public Reactive Voting Interface** | ![Pure PHP Public UI](screenshots/01-pure-php-frontend.png) |
+| **02. Web Administration & Live Queue Monitor** | ![Pure PHP Admin Console](screenshots/02-pure-php-admin-dashboard.png) |
+
+---
+
 ## 🚀 Key Architectural Advantages
 
 ```
@@ -70,7 +79,7 @@ Benchmark executed with the included testing suite (`tests/stress_test.php`):
 ## 📁 Project Structure
 
 ```text
-voting-system-pure-php/
+pure-php/
 ├── index.php                 # Responsive frontend UI (CIM Barcelona theme)
 ├── api/
 │   ├── vote.php             # High-concurrency vote ingestion endpoint
@@ -80,7 +89,7 @@ voting-system-pure-php/
 ├── admin/
 │   ├── index.php            # Admin control center (Simple/Advanced switcher, metrics)
 │   └── action.php           # Admin action processor
-├── worker.php               # CLI queue consumer daemon / cron runner
+├── worker.php               # CLI queue consumer daemon & cron runner
 ├── config.php               # System settings, secret keys, DB driver
 ├── includes/
 │   ├── Database.php         # SQLite WAL & MySQL PDO engine
@@ -93,6 +102,7 @@ voting-system-pure-php/
 │   └── js/app.js            # Reactive asynchronous voting client
 ├── data/                    # Protected database storage directory
 │   └── .htaccess            # Prevents direct web downloads of SQLite DB
+├── screenshots/             # Visual showcases
 └── tests/
     └── stress_test.php      # Concurrency & race condition benchmark suite
 ```
@@ -107,25 +117,13 @@ voting-system-pure-php/
 - cURL extension (for stress testing suite)
 
 ### Quick Start
-1. Place the `voting-system-pure-php` directory on any web server (Apache, Nginx, Caddy, or built-in PHP server).
-2. Start the local server:
+1. Deploy `pure-php/` to any web directory.
+2. Start PHP server:
    ```bash
    php -S localhost:8080 -t .
    ```
-3. Open `http://localhost:8080/` in your browser.
-4. Access the Administration Panel at `http://localhost:8080/admin/`.
-
-### Running the CLI Worker (Optional for Dedicated Environments)
-To run the background queue consumer continuously:
-```bash
-php worker.php --daemon
-```
-Or run a single drain pass via Cron every minute:
-```bash
-* * * * * php /path/to/voting-system-pure-php/worker.php --once
-```
-
-### Running the Concurrency Benchmark
-```bash
-php tests/stress_test.php 200
-```
+3. Access the voting page at `http://localhost:8080/` and administration at `http://localhost:8080/admin/`.
+4. Run the benchmark:
+   ```bash
+   php tests/stress_test.php 200
+   ```
