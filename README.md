@@ -1,4 +1,4 @@
-# Voting System (Monorepo)
+# Voting System - PHP & WordPress Plugin
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
@@ -62,9 +62,9 @@ voting-system/
 │   ├── README.md              # English documentation
 │   ├── README.es.md           # Spanish documentation
 │   └── README.ja.md           # Japanese documentation
-├── README.md                  # Master English monorepo overview
-├── README.es.md               # Master Spanish monorepo overview
-└── README.ja.md               # Master Japanese monorepo overview
+├── README.md                  # Master English project overview
+├── README.es.md               # Master Spanish project overview
+└── README.ja.md               # Master Japanese project overview
 ```
 
 ---

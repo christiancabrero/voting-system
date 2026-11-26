@@ -1,4 +1,4 @@
-# 投票システム（モノレポ構成）
+# Voting System - PHP & WordPress Plugin
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
@@ -40,7 +40,7 @@
 
 ---
 
-## 📦 モノレポのディレクトリ構成
+## 📦 プロジェクトのディレクトリ構成
 
 ```text
 voting-system/
@@ -62,9 +62,9 @@ voting-system/
 │   ├── README.md              # 英語ドキュメント
 │   ├── README.es.md           # スペイン語ドキュメント
 │   └── README.ja.md           # 日本語ドキュメント
-├── README.md                  # モノレポ全体概要（英語）
-├── README.es.md               # モノレポ全体概要（スペイン語）
-└── README.ja.md               # モノレポ全体概要（日本語）
+├── README.md                  # プロジェクト全体概要（英語）
+├── README.es.md               # プロジェクト全体概要（スペイン語）
+└── README.ja.md               # プロジェクト全体概要（日本語）
 ```
 
 ---

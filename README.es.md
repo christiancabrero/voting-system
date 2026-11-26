@@ -1,4 +1,4 @@
-# Voting System (Monorepo)
+# Voting System - PHP & WordPress Plugin
 
 [![Versión PHP](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
@@ -40,7 +40,7 @@
 
 ---
 
-## 📦 Estructura del Monorepo
+## 📦 Estructura del Proyecto
 
 ```text
 voting-system/
