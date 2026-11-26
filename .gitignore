@@ -1,0 +1,6 @@
+# Ignore temporary & runtime files
+.DS_Store
+Thumbs.db
+*.log
+data/*.sqlite*
+pure-php/data/*.sqlite*

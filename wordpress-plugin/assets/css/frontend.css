@@ -1,0 +1,525 @@
+/* ============================================
+   FRONTEND CSS - Sistema de Votaciones
+   ============================================ */
+
+/* Contenedor principal */
+.vs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* ============================================
+   HEADER - Información de votación
+   ============================================ */
+.vs-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.vs-voter-info {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 8px 0;
+}
+
+.vs-voter-info strong {
+    color: #007cba;
+    font-size: 20px;
+}
+
+.vs-remaining {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.vs-remaining strong {
+    color: #28a745;
+    font-size: 24px;
+}
+
+.vs-remaining-count {
+    display: inline-block;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.vs-remaining-count strong {
+    color: #28a745;
+    font-size: 22px;
+}
+
+/* ============================================
+   GRID DE OPCIONES
+   ============================================ */
+.vs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* ============================================
+   TARJETA DE OPCIÓN (ITEM)
+   ============================================ */
+.vs-item {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 25px 20px 20px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.vs-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.12);
+}
+
+.vs-item img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+    display: block;
+    border: 4px solid #f0f0f0;
+    transition: border-color 0.3s ease;
+    filter: blur(14px);
+    -webkit-filter: blur(14px);
+}
+
+.vs-item:hover img {
+    border-color: #28a745;
+}
+
+.vs-item h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.3;
+}
+
+.vs-item .vs-type {
+    color: #6c757d;
+    font-size: 14px;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.vs-item .vs-category {
+    display: inline-block;
+    background: #e9ecef;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #495057;
+    margin: 8px 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   BOTÓN DE VOTAR (Inspirado en CIM Barcelona)
+   ============================================ */
+.vs-vote-btn {
+    background: #6E1F2D;
+    color: #ffffff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-top: 10px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(110, 31, 45, 0.25);
+}
+
+.vs-vote-btn:hover:not(:disabled) {
+    background: #a67c4c;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(166, 124, 76, 0.35);
+}
+
+.vs-vote-btn:disabled,
+.vs-btn-closed {
+    background: #6c757d !important;
+    color: #ffffff !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    opacity: 0.8 !important;
+    box-shadow: none !important;
+}
+
+.vs-btn-voted {
+    background: #495057 !important;
+    color: #ffffff !important;
+    cursor: default !important;
+    transform: none !important;
+}
+
+/* ============================================
+   BADGE DE "VOTADO"
+   ============================================ */
+.vs-voted-badge {
+    display: inline-block;
+    background: #28a745;
+    color: #ffffff;
+    border-radius: 26px;
+    width: fit-content;
+    height: 26px;
+	padding: 0em 0.8em;
+    line-height: 26px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 10px;
+	margin-top:0.5em;
+    vertical-align: middle;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+/* ============================================
+   MENSAJES
+   ============================================ */
+.vs-message {
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    display: none;
+}
+
+.vs-message.success {
+    display: block;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.vs-message.error {
+    display: block;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ============================================
+   VOTACIONES CERRADAS / AVISOS
+   ============================================ */
+.vs-closed {
+    text-align: center;
+    padding: 30px 25px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    color: #6E1F2D;
+    font-size: 16px;
+    border: 1px solid #e9ecef;
+    border-left: 5px solid #6E1F2D;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.vs-closed.vs-closed-banner {
+    padding: 16px 20px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.vs-closed.vs-user-exhausted-banner {
+    padding: 14px 18px;
+    font-size: 14px;
+    background: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+    border-left: 5px solid #ffc107;
+}
+
+.vs-closed p {
+    margin: 0;
+}
+
+/* ============================================
+   RESULTADOS
+   ============================================ */
+.vs-results {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 25px 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.07);
+}
+
+.vs-results h3 {
+    text-align: center;
+    font-size: 28px;
+    margin: 0 0 5px;
+    color: #222;
+    font-weight: 700;
+}
+
+.vs-results > p {
+    text-align: center;
+    color: #6c757d;
+    font-size: 15px;
+    margin: 5px 0 20px;
+}
+
+.vs-attempts-info {
+    text-align: center;
+    color: #856404;
+    background: #fff3cd;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #ffc107;
+    font-size: 14px;
+    margin: 10px 0 20px;
+}
+
+/* Lista de resultados */
+.vs-results-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+	list-style: none !important;
+	display:flex;
+	flex-flow: wrap;
+	justify-content: space-around;
+}
+
+.vs-results-list li {
+    padding: 14px 0;
+	list-style: none !important;
+	background-image: unset !important;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+	flex-flow: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.vs-results-list li:last-child {
+    border-bottom: none;
+}
+
+.vs-results-list li strong {
+    min-width: 140px;
+    color: #222;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.vs-result-image img {
+	width:140px !important;
+	height:auto !important;
+	border-radius:100% !important;
+	object-fit: cover;
+	aspect-ratio: 1 / 1;
+}
+
+.vs-results-list .vs-result-content{
+	text-align:center;
+}
+
+.vs-vote-count {
+    background: #e9ecef;
+    padding: 3px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap;
+}
+
+.vs-percentage {
+    font-weight: 700;
+    color: #28a745;
+    font-size: 15px;
+    min-width: 60px;
+}
+
+/* Barra de progreso */
+.vs-bar {
+    flex: 1;
+    min-width: 120px;
+    height: 26px;
+    background: #e9ecef;
+    border-radius: 13px;
+    overflow: hidden;
+    position: relative;
+}
+
+.vs-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #28a745, #20c997);
+    border-radius: 13px;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+/* Meta información (tipo/categoría) */
+.vs-meta {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+    padding-left: 10px;
+}
+
+.vs-meta small {
+    color: #868e96;
+    font-size: 12px;
+    background: #f8f9fa;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.vs-results-list .vs-result-meta{
+	text-align:center;
+	margin-bottom:0.3em;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .vs-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .vs-item {
+        padding: 20px 15px;
+    }
+    
+    .vs-item img {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .vs-item h3 {
+        font-size: 17px;
+    }
+    
+    .vs-vote-btn {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+    
+    .vs-results {
+        padding: 20px 15px;
+    }
+    
+    .vs-results h3 {
+        font-size: 22px;
+    }
+    
+    .vs-results-list li {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .vs-results-list li strong {
+        min-width: 100%;
+        font-size: 15px;
+    }
+    
+    .vs-bar {
+        min-width: 80px;
+        height: 22px;
+    }
+    
+    .vs-remaining {
+        font-size: 15px;
+    }
+    
+    .vs-remaining strong {
+        font-size: 20px;
+    }
+    
+    .vs-header {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vs-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    
+    .vs-item {
+        padding: 15px 10px;
+    }
+    
+    .vs-item img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .vs-item h3 {
+        font-size: 14px;
+    }
+    
+    .vs-item .vs-type {
+        font-size: 12px;
+    }
+    
+    .vs-item .vs-category {
+        font-size: 10px;
+        padding: 2px 10px;
+    }
+    
+    .vs-vote-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .vs-voted-badge {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 11px;
+    }
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.vs-text-center {
+    text-align: center;
+}
+
+.vs-mt-10 {
+    margin-top: 10px;
+}
+
+.vs-mb-10 {
+    margin-bottom: 10px;
+}
+
+.vs-hidden {
+    display: none !important;
+}
