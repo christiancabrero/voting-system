@@ -72,7 +72,7 @@ Prueba ejecutada con la suite de estrés incluida (`tests/stress_test.php`):
 
 ```text
 voting-system-pure-php/
-├── index.php                 # Interfaz de usuario responsive (Estilo CIM Barcelona)
+├── index.php                 # Interfaz de usuario responsive (Tema Burdeos Concurso)
 ├── api/
 │   ├── vote.php             # Endpoint de ingesta de votos de alta concurrencia
 │   ├── state.php            # Hidratación dinámica del estado del votante

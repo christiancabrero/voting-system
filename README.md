@@ -58,7 +58,7 @@ voting-system/
 │   ├── includes/              # Database (SQLite WAL), Queue, Voter, and I18n engines
 │   ├── tests/                 # 200-500 concurrent request stress test suite
 │   ├── worker.php             # CLI queue worker daemon & cron runner
-│   ├── index.php              # Public voting interface (CIM Barcelona inspired)
+│   ├── index.php              # Public voting interface (Burgundy Competition theme)
 │   ├── README.md              # English documentation
 │   ├── README.es.md           # Spanish documentation
 │   └── README.ja.md           # Japanese documentation
@@ -82,7 +82,7 @@ voting-system/
 | **Simple Mode** | 1 vote per voter global (hides categories) | 1 vote per voter global (strictly enforced) |
 | **Closed State with Participants** | Yes (alert banner + locked buttons) | Yes (alert banner + locked buttons) |
 | **Languages Supported** | English (`en`, primary), Spanish (`es`), Catalan (`ca`) | English (`en`, primary), Spanish (`es`), Catalan (`ca`) |
-| **Visual Design** | CIM Barcelona theme (burgundy `#6E1F2D`) | CIM Barcelona theme (burgundy `#6E1F2D`) |
+| **Visual Design** | Competition Burgundy theme (`#6E1F2D`) | Competition Burgundy theme (`#6E1F2D`) |
 
 ---
 
@@ -110,7 +110,7 @@ voting-system/
 
 ## 🏷️ Tags & Keywords
 
-`php`, `wordpress`, `wordpress-plugin`, `voting-system`, `high-concurrency`, `sqlite-wal`, `producer-consumer`, `queue-worker`, `race-condition-safe`, `cache-friendly`, `wp-super-cache`, `wp-rocket`, `litespeed`, `i18n`, `multilingual`, `cim-barcelona`.
+`php`, `wordpress`, `wordpress-plugin`, `voting-system`, `high-concurrency`, `sqlite-wal`, `producer-consumer`, `queue-worker`, `race-condition-safe`, `cache-friendly`, `wp-super-cache`, `wp-rocket`, `litespeed`, `i18n`, `multilingual`.
 
 ---
 

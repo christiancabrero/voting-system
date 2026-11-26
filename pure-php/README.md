@@ -80,7 +80,7 @@ Benchmark executed with the included testing suite (`tests/stress_test.php`):
 
 ```text
 pure-php/
-├── index.php                 # Responsive frontend UI (CIM Barcelona theme)
+├── index.php                 # Responsive frontend UI (Competition burgundy theme)
 ├── api/
 │   ├── vote.php             # High-concurrency vote ingestion endpoint
 │   ├── state.php            # Dynamic voter state hydration (uncached)

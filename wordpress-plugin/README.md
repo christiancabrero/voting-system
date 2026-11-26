@@ -1,4 +1,4 @@
-# WordPress Voting System (CIM Barcelona Edition)
+# WordPress Voting System (Modern Competition Edition)
 
 High-performance voting plugin for WordPress featuring **Simple Mode** (1 vote per device/voter), **Advanced Category Limits**, **Closed Voting with Visible Participants**, and **100% Cache-Compatible Dynamic AJAX Hydration** (WP Super Cache, WP Rocket, LiteSpeed Cache). Built with privacy protection, anti-fraud device fingerprinting, and internationalization (English, Spanish, Catalan).
 
@@ -42,8 +42,8 @@ High-performance voting plugin for WordPress featuring **Simple Mode** (1 vote p
   4. Browser `Accept-Language` header.
   5. Default fallback: English (`en`).
 
-### 5. CIM Barcelona Visual Design & Privacy
-- Inspired by the official [CIM Barcelona](https://www.cimbarcelona.com/concurs/) competition UI:
+### 5. Competition Visual Design & Privacy
+- Inspired by classical competition voting interfaces:
   - Signature burgundy branding (`#6E1F2D`) with gold hover accents (`#a67c4c`).
   - Circular avatar images (`aspect-ratio: 1/1; border-radius: 50%`).
   - Built-in visual privacy blur for demo and audit environments.

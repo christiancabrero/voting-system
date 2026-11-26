@@ -167,14 +167,14 @@ class Database {
         $stmt = $pdo->query("SELECT COUNT(*) FROM options");
         if ($stmt->fetchColumn() == 0) {
             $demoOptions = [
-                ['Contestant 01', 'Soprano', 'Cant', 'https://www.cimbarcelona.com/wp-content/uploads/2026/11/1-cant-oksana-lepska-soprano.webp'],
-                ['Contestant 02', 'Contratenor', 'Cant', 'https://www.cimbarcelona.com/wp-content/uploads/2026/11/3-alvaro-basco-jimenez-contratenor.webp'],
-                ['Contestant 03', 'Soprano', 'Cant', 'https://www.cimbarcelona.com/wp-content/uploads/2026/11/2-cant-maria-martin-campos-soprano.webp'],
-                ['Contestant 04', 'Tenor', 'Cant', 'https://www.cimbarcelona.com/wp-content/uploads/2026/11/4-cant-oscar-encinas-damunt-tenor.webp'],
-                ['Contestant 05', 'Piano', 'Instrumental', 'https://www.cimbarcelona.com/wp-content/uploads/2026/11/natalie-schwamova-piano.webp'],
-                ['Contestant 06', 'Violí', 'Instrumental', 'https://www.cimbarcelona.com/wp-content/uploads/2026/11/adrian-teslya-violi.webp'],
-                ['Contestant 07', 'Flauta', 'Instrumental', 'https://www.cimbarcelona.com/wp-content/uploads/2026/11/lena-seitz-flauta.webp'],
-                ['Contestant 08', 'Piano', 'Instrumental', 'https://www.cimbarcelona.com/wp-content/uploads/2026/11/marti-sobrado-ruiz-piano.webp'],
+                ['Contestant 01', 'Soprano', 'Cant', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'],
+                ['Contestant 02', 'Contratenor', 'Cant', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'],
+                ['Contestant 03', 'Soprano', 'Cant', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'],
+                ['Contestant 04', 'Tenor', 'Cant', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'],
+                ['Contestant 05', 'Piano', 'Instrumental', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80'],
+                ['Contestant 06', 'Violí', 'Instrumental', 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80'],
+                ['Contestant 07', 'Flauta', 'Instrumental', 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80'],
+                ['Contestant 08', 'Piano', 'Instrumental', 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80'],
             ];
             $insert = $pdo->prepare("INSERT INTO options (title, type, category, photo_url) VALUES (?, ?, ?, ?)");
             foreach ($demoOptions as $opt) {

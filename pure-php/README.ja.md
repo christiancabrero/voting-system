@@ -71,7 +71,7 @@
 
 ```text
 voting-system-pure-php/
-├── index.php                 # フロントエンド画面（CIM Barcelonaデザイン）
+├── index.php                 # フロントエンド画面（ワインレッド・コンクール仕様）
 ├── api/
 │   ├── vote.php             # 高並行投票受付エンドポイント
 │   ├── state.php            # 有権者状態の動的ハイドレーション

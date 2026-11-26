@@ -58,7 +58,7 @@ voting-system/
 │   ├── includes/              # Motores de base de datos WAL, cola, votante e i18n
 │   ├── tests/                 # Suite de estrés de 200 a 500 peticiones simultáneas
 │   ├── worker.php             # Demonio CLI de cola y ejecutor cron
-│   ├── index.php              # Interfaz de votación pública (inspirada en CIM Barcelona)
+│   ├── index.php              # Interfaz de votación pública (Tema Burdeos Concurso)
 │   ├── README.md              # Documentación en Inglés
 │   ├── README.es.md           # Documentación en Español
 │   └── README.ja.md           # Documentación en Japonés
@@ -82,7 +82,7 @@ voting-system/
 | **Modo Simple** | 1 voto global (oculta categorías) | 1 voto global (estrictamente aplicado) |
 | **Cierre con Participantes Visibles**| Sí (aviso superior + botones bloqueados) | Sí (aviso superior + botones bloqueados) |
 | **Idiomas Soportados** | Inglés (`en`, principal), Español (`es`), Catalán (`ca`) | Inglés (`en`, principal), Español (`es`), Catalán (`ca`) |
-| **Diseño Visual** | Tema CIM Barcelona (burdeos `#6E1F2D`) | Tema CIM Barcelona (burdeos `#6E1F2D`) |
+| **Diseño Visual** | Tema Burdeos Concurso (`#6E1F2D`) | Tema Burdeos Concurso (`#6E1F2D`) |
 
 ---
 
@@ -110,7 +110,7 @@ voting-system/
 
 ## 🏷️ Etiquetas y Tecnologías
 
-`php`, `wordpress`, `wordpress-plugin`, `voting-system`, `high-concurrency`, `sqlite-wal`, `producer-consumer`, `queue-worker`, `race-condition-safe`, `cache-friendly`, `wp-super-cache`, `wp-rocket`, `litespeed`, `i18n`, `multilingual`, `cim-barcelona`.
+`php`, `wordpress`, `wordpress-plugin`, `voting-system`, `high-concurrency`, `sqlite-wal`, `producer-consumer`, `queue-worker`, `race-condition-safe`, `cache-friendly`, `wp-super-cache`, `wp-rocket`, `litespeed`, `i18n`, `multilingual`.
 
 ---
 

@@ -58,7 +58,7 @@ voting-system/
 │   ├── includes/              # DB（SQLite WAL）、キュー、有権者認証、i18n
 │   ├── tests/                 # 200〜500件同時リクエストストレステスト
 │   ├── worker.php             # CLIキュー処理デーモン & Cronランナー
-│   ├── index.php              # CIM Barcelonaスタイルの投票画面
+│   ├── index.php              # コンクール仕様（ワインレッド）の投票画面
 │   ├── README.md              # 英語ドキュメント
 │   ├── README.es.md           # スペイン語ドキュメント
 │   └── README.ja.md           # 日本語ドキュメント
@@ -82,7 +82,7 @@ voting-system/
 | **シンプルモード** | 全体で1票（不要なカテゴリ設定を自動非表示） | 全体で1票（厳格な強制適用） |
 | **投票終了時の候補者表示** | 対応（上部告知バナー + ボタン無効化） | 対応（上部告知バナー + ボタン無効化） |
 | **多言語対応** | 英語（主言語）、スペイン語、カタルーニャ語 | 英語（主言語）、スペイン語、カタルーニャ語 |
-| **デザイン仕様** | CIM Barcelona スタイル（ワインレッド `#6E1F2D`） | CIM Barcelona スタイル（ワインレッド `#6E1F2D`） |
+| **デザイン仕様** | コンクールスタイル（ワインレッド `#6E1F2D`） | コンクールスタイル（ワインレッド `#6E1F2D`） |
 
 ---
 
@@ -110,7 +110,7 @@ voting-system/
 
 ## 🏷️ タグ & キーワード
 
-`php`, `wordpress`, `wordpress-plugin`, `voting-system`, `high-concurrency`, `sqlite-wal`, `producer-consumer`, `queue-worker`, `race-condition-safe`, `cache-friendly`, `wp-super-cache`, `wp-rocket`, `litespeed`, `i18n`, `multilingual`, `cim-barcelona`.
+`php`, `wordpress`, `wordpress-plugin`, `voting-system`, `high-concurrency`, `sqlite-wal`, `producer-consumer`, `queue-worker`, `race-condition-safe`, `cache-friendly`, `wp-super-cache`, `wp-rocket`, `litespeed`, `i18n`, `multilingual`.
 
 ---
 
