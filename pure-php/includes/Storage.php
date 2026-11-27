@@ -50,6 +50,10 @@ class Storage {
         return self::getSetting('closed_show_participants', '1') === '1';
     }
 
+    public static function getClosedBlurParticipants(): bool {
+        return self::getSetting('closed_blur_participants', '0') === '1';
+    }
+
     /** Get all contestants/options */
     public static function getOptions(): array {
         $pdo = Database::getConnection();

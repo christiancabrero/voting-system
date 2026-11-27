@@ -1,85 +1,67 @@
-# WordPress 投票システム（コンクール仕様エディション）
+# WordPress Voting System（モダン投票コンテスト版）
 
-WordPress向けの高性能投票プラグインです。**シンプルモード**（1デバイス/有権者につき1票）、**高度なカテゴリ制限**、**投票終了時の参加者一覧表示**、および**キャッシュプラグイン対応の動的AJAXハイドレーション**（WP Super Cache、WP Rocket、LiteSpeed Cache対応）を搭載しています。プライバシー保護機能、デバイス指紋認証による不正防止、多言語対応（英語、スペイン語、カタルーニャ語）を備えています。
-
----
-
-## 🌟 主な機能
-
-### 1. シンプルモード / アドバンスモード切り替え
-- **シンプルモード（有権者全体で1票）**:
-  - カテゴリや種別に関係なく、全参加者を統一グループとして扱います。
-  - 1つのデバイスまたは有権者につき、全体で**厳格に1票**のみに制限します。
-  - 管理画面（`設定 > 投票設定`）に対話型の切り替えスイッチを搭載。
-  - シンプルモードを有効にすると、不要なカテゴリ別制限や複数投票オプションが管理画面から自動的に非表示になり、直感的でミスのない運用が可能です。
-- **アドバンスモード**:
-  - カテゴリ別、種別別、または全体での投票上限を個別に設定可能。
-  - 同一参加者への複数投票を許可する設定も可能。
-
-### 2. 投票終了時の参加者一覧表示機能
-- 新機能：**「投票終了時も参加者を表示する」**（`vs_closed_show_participants`）。
-- 投票が締め切られた場合（手動またはスケジュール終了日時到達時）：
-  - ページ上部にステータス告知バナーを表示。
-  - 参加者の写真、名前、部門、種別は100%そのまま閲覧可能。
-  - 全ての投票ボタンが自動的にロック（`disabled`）され、ローカライズされたテキスト（**「Voting closed」** / **「Votaciones cerradas」** / **「Votacions tancades」**）が表示されます。
-
-### 3. 高速静的キャッシュ & 動的AJAXハイドレーション
-- **解決された課題**: フルページキャッシュプラグインを使用すると、既に投票を済ませたユーザーに対しても「残り1票」といった古いHTMLが表示されたり、セキュリティnonceが期限切れになる問題がありました。
-- **本プラグインの解決策**:
-  - 参加者グリッド、画像、静的マークアップは、WP Super CacheやWP Rocket、LiteSpeed、CDN（Cloudflare）によって**100%静的にキャッシュ**され、アクセス集中時のサーバー負荷を劇的に低減します。
-  - ページ読み込み時に、超軽量の非同期エンドポイント（`vs_get_voter_state`）がブラウザ側の投票状態を問い合わせます。
-  - セキュリティnonceを動的に更新し、キャッシュされたページでも期限切れを防止。
-  - 残り投票数をリアルタイムで同期し、上限に達したボタンをロックし、投票済み参加者には**「✓ 投票済み」**バッジを付与します。
-  - 管理画面には各キャッシュプラグインの最適設定ガイドを完備。
-
-### 4. 自動検出付き多言語エンジン
-- **主言語**: 英語（`en`）。
-- **対応言語**: 英語（`en`）、スペイン語（`es`）、カタルーニャ語（`ca`）。
-- **言語判定の優先順位**:
-  1. URLパラメータ（`?lang=en|es|ca`）またはクッキー（`vs_lang`）。
-  2. Polylang または WPML の現在言語。
-  3. WordPressサイトのロケール設定（`determine_locale()` / `get_locale()`）。
-  4. ブラウザの `Accept-Language` ヘッダー。
-  5. デフォルトフォールバック: 英語（`en`）。
-
-### 5. コンクール仕様のエレガントなデザイン
-- 音楽コンクール等の公式投票インターフェースにインスパイアされた高級感のあるデザイン:
-  - ワインレッド（`#6E1F2D`）を基調とし、ゴールド（`#a67c4c`）のホバーアクセント。
-  - 均一な円形アバター画像（`aspect-ratio: 1/1; border-radius: 50%`）。
-  - デモ画面や監査用に顔写真のプライバシーぼかしフィルターを搭載。
-  - スマートフォン、タブレット、PCに対応したレスポンシブグリッド。
+[![最新リリース](https://img.shields.io/github/v/release/christiancabrero/voting-system?color=blue&label=最新リリース )](https://github.com/christiancabrero/voting-system/releases/latest)
+[![PHP](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
+[![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
+[![License](https://img.shields.io/badge/License-GPLv2-green.svg)](#license)
 
 ---
 
-## 📸 スクリーンショット
-
-![シンプルモード（投票受付中）](screenshots/01-frontend-open-simple-mode.png)
-*01. シンプルモード（投票受付中）*
-
-![投票完了後（投票上限到達状態）](screenshots/02-vote-cast-exhausted-state.png)
-*02. 投票完了後（投票上限到達状態）*
-
-![投票終了（参加者表示維持）](screenshots/03-voting-closed-participants-visible.png)
-*03. 投票終了（参加者表示維持）*
-
-![管理画面 シンプル/アドバンス切り替え](screenshots/04-backend-simple-mode-switcher.png)
-*04. 管理画面 シンプル/アドバンス切り替え*
-
-![管理画面 キャッシュ最適化ガイド](screenshots/05-backend-cache-compatibility-guide.png)
-*05. 管理画面 キャッシュ最適化ガイド*
+## 📥 [Download Latest Release](https://github.com/christiancabrero/voting-system/releases/latest)
 
 ---
 
-## 🚀 インストール & 使用方法
+## 📸 ビジュアルギャラリー
 
-1. `voting-system` フォルダを WordPress の `wp-content/plugins/` ディレクトリにコピーします。
-2. WordPress管理画面の「プラグイン > インストール済みプラグイン」から有効化します。
-3. **投票システム > 設定** に移動します:
-   - **シンプルモード**（全体で1票）または**アドバンスモード**を選択します。
-   - 必要に応じて「投票終了時も参加者を表示する」を有効にします。
-   - スケジュール設定または手動で受付状態を制御します。
-4. **投票システム > 参加者追加** から候補者を登録します。
-5. 任意のページや投稿にショートコードを挿入します:
-   ```text
-   [voting_form]
-   ```
+![01. Frontend Open](screenshots/01-frontend-open-simple-mode.png)
+*01. フロントエンド（シンプルモード受付中） — ぼかしのない鮮明な候補者写真、ボタン上部のカテゴリタグ、最下部に固定された投票ボタン。*
+
+![02. Post-Vote Exhausted State](screenshots/02-vote-cast-exhausted-state.png)
+*02. 投票後（投票権行使完了状態） — リアルタイム確認表示；投票先カードに「✓ 投票済み」が表示され、残りは自動ロック。*
+
+![03. Closed Voting with Participants](screenshots/03-voting-closed-participants-visible.png)
+*03. 投票終了時の候補者表示 — 投票締切通知バナーを表示しつつ、すべての候補者写真と情報を鮮明に公開。*
+
+![04. Backend Simple / Advanced Mode Switch](screenshots/04-backend-simple-mode-switcher.png)
+*04. 管理画面モード切り替え設定 — シンプルモード（1人1票）とカテゴリ別上限を設定できるアドバンスドモードの対話型切り替え。*
+
+![05. Cache Compatibility Guide](screenshots/05-backend-cache-compatibility-guide.png)
+*05. キャッシュ互換性ガイド — 管理画面内に統合された、動的Nonceおよび投票者状態ハイドレーションの解説。*
+
+![08. Results & Breakdown](screenshots/08-wp-admin-results-breakdown.png)
+*08. リアルタイム開票結果 — 候補者ごとの得票数、得票率プログレスバー、集計一覧をリアルタイム表示。*
+
+![09. Audit & Votes Trail](screenshots/09-wp-admin-audit-votes.png)
+*09. 投票監査ログ — 端末識別子、IPアドレス、トークン、投票日時を改ざん防止形式で記録。*
+
+![10. Security Settings](screenshots/10-wp-admin-security-settings.png)
+*10. セキュリティ・不正対策設定 — IPホワイトリスト/ブラックリスト、リクエスト頻度制限、最大投票者数上限の設定。*
+
+---
+
+## 📝 ショートコード仕様書
+
+### 1. `[voting_form]`
+- `category=""`: Filter contestants by category.
+- `type=""`: Filter contestants by type.
+- `limit="0"`: Custom vote quota for this form.
+- `columns="3"`: Grid desktop columns (`2`, `3`, `4`).
+- `show_results="0"`: Display results below voting cards.
+
+### 2. `[voting_results]`
+- `category=""`: Filter results by category.
+- `type=""`: Filter results by type.
+- `show_percentages="1"`: Show percentage bars.
+- `show_numbers="1"`: Show total vote counts.
+- `show_breakdown="1"`: Detailed contestants breakdown.
+
+---
+
+## 🌍 多言語対応 (i18n)
+英語（en）、スペイン語（es）、カタルーニャ語（ca）、ポルトガル語（pt）、フランス語（fr）、日本語（ja）、中国語（zh）の7言語に対応。
+`languages/{lang}.php` ファイルによる容易な言語追加が可能です。
+
+---
+
+## 📄 ライセンス
+- GNU General Public License v2 (GPLv2)

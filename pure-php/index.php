@@ -37,6 +37,10 @@ $deviceId = Voter::getDeviceId();
             <a href="?lang=en" class="vs-lang-btn <?php echo $lang === 'en' ? 'active' : ''; ?>">EN</a>
             <a href="?lang=es" class="vs-lang-btn <?php echo $lang === 'es' ? 'active' : ''; ?>">ES</a>
             <a href="?lang=ca" class="vs-lang-btn <?php echo $lang === 'ca' ? 'active' : ''; ?>">CA</a>
+            <a href="?lang=pt" class="vs-lang-btn <?php echo $lang === 'pt' ? 'active' : ''; ?>">PT</a>
+            <a href="?lang=fr" class="vs-lang-btn <?php echo $lang === 'fr' ? 'active' : ''; ?>">FR</a>
+            <a href="?lang=ja" class="vs-lang-btn <?php echo $lang === 'ja' ? 'active' : ''; ?>">JP</a>
+            <a href="?lang=zh" class="vs-lang-btn <?php echo $lang === 'zh' ? 'active' : ''; ?>">CN</a>
         </div>
         <div>
             <span class="vs-card-category" style="margin-bottom: 0;">
@@ -66,8 +70,11 @@ $deviceId = Voter::getDeviceId();
     </div>
 
     <!-- Contestants Grid -->
-    <?php if ($isOpen || $showParticipants): ?>
-        <div class="vs-grid">
+    <?php 
+    $blurClass = (!$isOpen && $showParticipants && Storage::getClosedBlurParticipants()) ? ' vs-closed-blurred' : '';
+    if ($isOpen || $showParticipants): 
+    ?>
+        <div class="vs-grid<?php echo $blurClass; ?>">
             <?php foreach ($options as $opt): ?>
                 <div class="vs-card" data-id="<?php echo (int) $opt['id']; ?>">
                     <div class="vs-card-content">

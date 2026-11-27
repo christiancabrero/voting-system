@@ -1,136 +1,139 @@
 # Voting System
 
-## Pure PHP 版 & WordPress プラグイン版
+## Pure PHP version & WordPress Plugin version
 
-[![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
+[![最新リリース](https://img.shields.io/github/v/release/christiancabrero/voting-system?color=blue&label=%E6%9C%80%E6%96%B0%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9)](https://github.com/christiancabrero/voting-system/releases/latest)
+[![PHPバージョン](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
-[![License](https://img.shields.io/badge/License-GPLv2%20%2F%20MIT-green.svg)](#ライセンス)
-[![Languages](https://img.shields.io/badge/i18n-EN%20%7C%20ES%20%7C%20CA-purple.svg)](#多言語対応)
-[![Concurrency](https://img.shields.io/badge/Throughput-750%2B%20req%2Fsec-success.svg)](#パフォーマンスと並行処理)
+[![ライセンス](https://img.shields.io/badge/License-GPLv2%20%2F%20MIT-green.svg)](#ライセンス)
+[![対応言語](https://img.shields.io/badge/i18n-7%E8%A8%80%E8%AA%9E%20(EN%20%7C%20ES%20%7C%20CA%20%7C%20PT%20%7C%20FR%20%7C%20JA%20%7C%20ZH)-purple.svg)](#多言語対応-i18n)
+[![高並行処理能力](https://img.shields.io/badge/Throughput-750%2B%20req%2Fsec-success.svg)](#高スループット性能)
 
-**Voting System** は、WordPress CMS環境と超高並行処理を求める独立型Web環境の双方に向けて設計された、デュアルエディション構成の投票プラットフォームです:
+**Voting System** は、WordPress エコシステムおよび超高並行処理が求められるスタンドアロン環境の両方に向けて設計された、本番運用対応のデュアルエディション投票システムアーキテクチャです。
 
-1. [**WordPress プラグイン版 (`v3.4.0`)**](wordpress-plugin/): シンプル/アドバンス切り替えスイッチ、投票終了時の参加者一覧表示、プライバシー保護ぼかしアバター、各種キャッシュプラグイン（WP Super Cache、WP Rocket、LiteSpeed Cache）に100%適合する動的AJAXハイドレーションを完備したWordPress向け公式プラグイン。
-2. [**高並行処理 Pure PHP 版 (`v2.0.0`)**](pure-php/): Producer-Consumerキュー（SQLite WAL）、PHPセッションロックフリーのHMAC CSRF保護、ACIDトランザクションシリアル化を採用し、**毎秒750件以上の同時リクエスト**をデータベース競合ゼロ・レースコンディション完全耐性で処理するフレームワーク不要の超高速エンジン。
+1. [**WordPress プラグイン版**](wordpress-plugin/): シンプル/アドバンスド切り替え、投票終了時の候補者表示、ぼかしのない高精細写真カード、カード最下部に配置された投票ボタン、不正防止端末指紋認証、100%キャッシュ互換の動的AJAXハイドレーション（WP Super Cache、WP Rocket、LiteSpeed）を備えたフル機能プラグイン。
+2. [**Pure PHP 高並行処理版**](pure-php/): 生産者・消費者（Producer-Consumer）モデルの SQLite WAL キュー、セッション保護された管理コンソール、モジュール式言語ファイル（`languages/*.php`）、ロック競合なく**毎秒750件以上の同時リクエスト**を安全に処理するACIDシリアライゼーションを搭載した軽量スタンドアロンエンジン。
 
 ---
 
-## 📖 言語選択 / Translations / Documentación / 文档
+## 📖 多言語ドキュメント
 
 - 🇬🇧 **[English Documentation](README.md)**
 - 🇪🇸 **[Documentación en Español](README.es.md)**
-- 🇯🇵 **[日本語ドキュメント（現在表示中）](README.ja.md)**
+- 🏴 **[Documentació en Català](README.ca.md)**
+- 🇵🇹 **[Documentação em Português](README.pt.md)**
+- 🇫🇷 **[Documentation en Français](README.fr.md)**
+- 🇯🇵 **[日本語ドキュメント（現在）](README.ja.md)**
 - 🇨🇳 **[中文文档](README.zh.md)**
 
 ---
 
-## 📸 スクリーンショット一覧（両バージョン）
+## 📥 ダウンロードとリリース
 
-### 🌟 1. WordPress プラグイン版 (`v3.4.0`)
+最新の安定版パッケージは常に以下から直接ダウンロードしてください。
+👉 **[最新リリースをダウンロード](https://github.com/christiancabrero/voting-system/releases/latest)**
 
-![01. シンプルモード（投票受付中）](screenshots/01-wp-frontend-open-simple-mode.png)
-*01. シンプルモード（投票受付中） — 1人1票限定、レスポンシブな参加者一覧グリッド*
+---
 
-![02. 投票完了後（上限到達状態）](screenshots/02-wp-vote-cast-exhausted-state.png)
-*02. 投票完了後（上限到達状態） — 投票した候補者に「✓ Voted」を表示し他ボタンを無効化*
+## 📸 ビジュアルギャラリー
 
-![03. 投票終了（参加者表示維持）](screenshots/03-wp-voting-closed-participants-visible.png)
-*03. 投票終了（参加者表示維持） — 告知バナーを表示しつつ参加者情報を閲覧可能に維持*
+### 🌟 1. WordPress プラグイン版
 
-![04. 管理画面 シンプル/アドバンス切替](screenshots/04-wp-backend-simple-mode-switcher.png)
-*04. 管理画面 シンプル/アドバンス切替 — 直感的なカード式UIで不要なカテゴリ設定を自動非表示*
+![01. フロントエンド（シンプルモード受付中）](screenshots/01-wp-frontend-open-simple-mode.png)
+*01. フロントエンド（シンプルモード受付中） — ぼかしのない鮮明な候補者写真、ボタン上部に独立配置されたカテゴリタグ、カード最下部に固定された投票ボタン。*
 
-![05. 管理画面 キャッシュ最適化ガイド](screenshots/05-wp-backend-cache-compatibility-guide.png)
-*05. 管理画面 キャッシュ最適化ガイド — WP Super Cache等の最適化手順を管理画面内に内蔵*
+![02. 投票後（投票権行使完了状態）](screenshots/02-wp-vote-cast-exhausted-state.png)
+*02. 投票後（投票権行使完了状態） — リアルタイム確認表示；投票先カードに「✓ 投票済み」が表示され、残りのボタンは自動ロック。*
 
-### ⚡ 2. 高並行処理 Pure PHP 独立版 (`v2.0.0`)
+![03. 投票終了時の候補者表示](screenshots/03-wp-voting-closed-participants-visible.png)
+*03. 投票終了時の候補者表示 — 投票締切通知バナーを表示しつつ、すべての候補者写真と情報を鮮明に公開（ぼかしは任意設定）。*
+
+![04. 管理画面モード切り替え設定](screenshots/04-wp-backend-simple-mode-switcher.png)
+*04. 管理画面モード切り替え設定 — シンプルモード（1人1票）とカテゴリ別上限を設定できるアドバンスドモードの対話型切り替え。*
+
+![05. キャッシュ互換性ガイド](screenshots/05-wp-backend-cache-compatibility-guide.png)
+*05. キャッシュ互換性ガイド — 管理画面内に統合された、動的Nonceおよび投票者状態ハイドレーションの解説。*
+
+![08. リアルタイム開票結果](screenshots/08-wp-admin-results-breakdown.png)
+*08. リアルタイム開票結果 — 候補者ごとの得票数、得票率プログレスバー、集計一覧をリアルタイム表示。*
+
+![09. 投票監査ログ](screenshots/09-wp-admin-audit-votes.png)
+*09. 投票監査ログ — 端末識別子、IPアドレス、トークン、投票日時を改ざん防止形式で記録。*
+
+![10. セキュリティ・不正対策設定](screenshots/10-wp-admin-security-settings.png)
+*10. セキュリティ・不正対策設定 — IPホワイトリスト/ブラックリスト、リクエスト頻度制限、最大投票者数上限の設定。*
+
+---
+
+### ⚡ 2. Pure PHP 高並行処理版
 
 ![06. スタンドアロン公開画面](screenshots/06-pure-php-frontend-live.png)
-*06. スタンドアロン公開画面 — 言語切り替えバー付き（EN/ES/CA）超軽量リアクティブUI*
+*06. スタンドアロン公開画面 — 7言語セレクター（EN、ES、CA、PT、FR、JP、CN）、リアルタイム順位、クリアな候補者カード。*
+
+![11. 管理コンソールログイン画面](screenshots/11-pure-php-admin-login.png)
+*11. 管理コンソールログイン画面 — 認証情報による安全なアクセス制御と設定・復旧案内。*
 
 ![07. Web管理コンソール](screenshots/07-pure-php-admin-dashboard.png)
-*07. Web管理コンソール — リアルタイムキュー監視、モード切替、ランキング、監査ログ*
+*07. Web管理コンソール — WALキュー監視、モード切り替え、手動キュードレイン実行、候補者管理。*
+
+![12. リアルタイム監査ログ](screenshots/12-pure-php-audit-log.png)
+*12. リアルタイム監査ログ — 処理済みおよび待機中の投票を端末フィンガープリント付きで即時追跡。*
 
 ---
 
-## 📦 プロジェクトのディレクトリ構成
+## 📝 WordPress ショートコード仕様
 
-```text
-voting-system/
-├── screenshots/               # 両エディションの画像一覧
-├── wordpress-plugin/          # WordPress プラグイン版 (v3.4.0)
-│   ├── assets/                # 管理画面・フロントエンド用 CSS / JS
-│   ├── screenshots/           # 匿名化済みスクリーンショット
-│   ├── voting-system.php      # WordPress プラグインのエントリーファイル
-│   ├── README.md              # 英語ドキュメント
-│   ├── README.es.md           # スペイン語ドキュメント
-│   ├── README.ja.md           # 日本語ドキュメント
-│   └── README.zh.md           # 中国語ドキュメント
-├── pure-php/                  # 独立型 Pure PHP 版 (v2.0.0)
-│   ├── api/                   # 投票・状態・統計APIエンドポイント
-│   ├── admin/                 # 独立したWeb管理コンソール
-│   ├── includes/              # DB（SQLite WAL）、キュー、有権者認証、i18n
-│   ├── tests/                 # 200〜500件同時リクエストストレステスト
-│   ├── worker.php             # CLIキュー処理デーモン & Cronランナー
-│   ├── index.php              # コンクール仕様（ワインレッド）の投票画面
-│   ├── README.md              # 英語ドキュメント
-│   ├── README.es.md           # スペイン語ドキュメント
-│   ├── README.ja.md           # 日本語ドキュメント
-│   └── README.zh.md           # 中国語ドキュメント
-├── README.md                  # プロジェクト全体概要（英語）
-├── README.es.md               # プロジェクト全体概要（スペイン語）
-├── README.ja.md               # プロジェクト全体概要（日本語）
-└── README.zh.md               # プロジェクト全体概要（中国語）
+### 1. `[voting_form]`
+公開投票カード一覧を出力します。
+
+| 属性 | 型 | 初期値 | 説明 |
+| :--- | :--- | :--- | :--- |
+| `category` | `string` | `""` | 特定のカテゴリーで候補者を絞り込みます（例: `category="Simpson"`）。 |
+| `type` | `string` | `""` | タイプで候補者を絞り込みます（例: `type="Family"`）。 |
+| `limit` | `int` | `0` | このフォーム固有の投票上限を設定（`0`で全体設定を適用）。 |
+| `columns` | `int` | `3` | PC画面でのグリッド列数（`2`、`3`、または `4`）。 |
+| `show_results` | `int` | `0` | `1` を指定するとフォーム直下に結果を埋め込みます。 |
+
+### 2. `[voting_results]`
+集計結果および得票率を表示します。
+
+| 属性 | 型 | 初期値 | 説明 |
+| :--- | :--- | :--- | :--- |
+| `category` | `string` | `""` | カテゴリーで結果を絞り込み。 |
+| `type` | `string` | `""` | タイプで結果を絞り込み。 |
+| `show_percentages` | `int` | `1` | 得票率バーの表示/非表示（`1` または `0`）。 |
+| `show_numbers` | `int` | `1` | 得票数の表示/非表示（`1` または `0`）。 |
+| `show_breakdown` | `int` | `1` | 候補者別の詳細内訳の表示。 |
+
+---
+
+## 🔐 Pure PHP 管理パネルアクセスと復旧方法
+
+- **管理画面URL**: `http://your-domain/pure-php/admin/`
+- **初期ユーザー名**: `admin`
+- **初期パスワード**: `admin123`
+
+### 認証情報の設定とアクセス復旧
+設定は `pure-php/config.php` 内で集中管理されています。
+```php
+define('ADMIN_USER', 'admin');
+define('ADMIN_PASS', 'admin123'); // 本番環境では強固なパスワードに変更してください
 ```
+アクセス情報を紛失または変更する場合は、FTPやファイルマネージャーから `pure-php/config.php` を開き、定数 `ADMIN_PASS` を更新するだけで即時反映されます。
 
 ---
 
-## ⚡ エディション比較: どちらを選ぶべきか？
+## 🌍 多言語対応 (i18n)
 
-| 項目 | WordPress プラグイン版 (`v3.4.0`) | Pure PHP 独立版 (`v2.0.0`) |
-| :--- | :--- | :--- |
-| **対象プラットフォーム** | WordPress 6.0 以上 | 任意の PHP 8.0 以上サーバー（Nginx/Apache） |
-| **依存関係** | WordPress コアおよび WPDB | 外部フレームワーク・依存ライブラリ ゼロ |
-| **データベース** | MySQL / MariaDB | 高性能 SQLite WAL または MySQL PDO |
-| **並行処理設計** | 静的HTMLキャッシュ + 動的AJAXハイドレーション | Producer-Consumer WAL キュー + ワーカー |
-| **スループット性能** | キャッシュプラグインによる大量配信 | **毎秒755リクエスト以上の持続的インジェスチョン** |
-| **レースコンディション防止**| DBスコープ検証による制御 | **ACIDトランザクションによるアトミック完全防止** |
-| **シンプルモード** | 全体で1票（不要なカテゴリ設定を自動非表示） | 全体で1票（厳格な強制適用） |
-| **投票終了時の候補者表示** | 対応（上部告知バナー + ボタン無効化） | 対応（上部告知バナー + ボタン無効化） |
-| **多言語対応** | 英語（主言語）、スペイン語、カタルーニャ語 | 英語（主言語）、スペイン語、カタルーニャ語 |
-| **デザイン仕様** | コンクールスタイル（ワインレッド `#6E1F2D`） | コンクールスタイル（ワインレッド `#6E1F2D`） |
+**7言語**を標準サポート：
+英語（`en`）、スペイン語（`es`）、カタルーニャ語（`ca`）、ポルトガル語（`pt`）、フランス語（`fr`）、日本語（`ja`）、中国語（`zh`）。
 
----
-
-## 🚀 クイックスタート
-
-### A: WordPress プラグイン (`wordpress-plugin/`)
-1. `wordpress-plugin/` フォルダを `wp-content/plugins/voting-system/` に配置します。
-2. WordPress管理画面「プラグイン」から有効化します。
-3. **投票システム > 設定** から動作モードや表示条件を設定します。
-4. ショートコード `[voting_form]` を任意の固定ページ等に貼り付けます。
-
-### B: Pure PHP 独立版 (`pure-php/`)
-1. `pure-php/` ディレクトリをWebサーバーに配置します。
-2. PHP開発用サーバーで起動する場合:
-   ```bash
-   php -S localhost:8080 -t pure-php/
-   ```
-3. 並行ストレステストを実行してスループットを計測:
-   ```bash
-   php pure-php/tests/stress_test.php 200
-   ```
-4. `http://localhost:8080/` で投票画面、`http://localhost:8080/admin/` で管理画面が開きます。
-
----
-
-## 🏷️ タグ & キーワード
-
-`php`, `wordpress`, `wordpress-plugin`, `voting-system`, `high-concurrency`, `sqlite-wal`, `producer-consumer`, `queue-worker`, `race-condition-safe`, `cache-friendly`, `wp-super-cache`, `wp-rocket`, `litespeed`, `i18n`, `multilingual`.
+### ファイルによる容易な翻訳追加
+`pure-php/languages/` 内の個別ファイル（例: `ja.php`）を編集・追加するだけで、簡単に新しい言語へローカライズ可能です。
 
 ---
 
 ## 📄 ライセンス
 
-- WordPress プラグイン版: **GNU General Public License v2 (GPLv2)** に基づき配布されます。
-- Pure PHP 高並行処理版: **MIT License** に基づき配布されます。
+- WordPress プラグイン版: **GNU General Public License v2 (GPLv2)**
+- Pure PHP 高並行処理版: **MIT License**

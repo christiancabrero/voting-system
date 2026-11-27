@@ -13,113 +13,7 @@ if (!defined('ABSPATH')) exit;
 define('VS_URL', plugin_dir_url(__FILE__));
 define('VS_PATH', plugin_dir_path(__FILE__));
 
-/** Detect preferred language from the browser's HTTP_ACCEPT_LANGUAGE header. */
-function vs_detect_browser_language() {
-    if (empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-        return '';
-    }
-    $langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-    foreach ($langs as $part) {
-        $sub = explode(';', $part)[0];
-        $code = strtolower(substr(trim($sub), 0, 2));
-        if (in_array($code, ['en', 'es', 'ca'], true)) {
-            return $code;
-        }
-    }
-    return '';
-}
-
-/** Return the active public language, prioritizing EN as default and auto-detecting via WP locale or Browser. */
-function vs_front_language() {
-    // 1. Explicit GET or COOKIE override
-    if (!empty($_GET['lang'])) {
-        $get_lang = strtolower(substr(trim($_GET['lang']), 0, 2));
-        if (in_array($get_lang, ['en', 'es', 'ca'], true)) {
-            return $get_lang;
-        }
-    }
-    if (!empty($_COOKIE['vs_lang'])) {
-        $cookie_lang = strtolower(substr(trim($_COOKIE['vs_lang']), 0, 2));
-        if (in_array($cookie_lang, ['en', 'es', 'ca'], true)) {
-            return $cookie_lang;
-        }
-    }
-
-    // 2. Multilingual plugins (Polylang, WPML)
-    if (function_exists('pll_current_language')) {
-        $pll = (string) pll_current_language('slug');
-        $code = strtolower(substr($pll, 0, 2));
-        if (in_array($code, ['en', 'es', 'ca'], true)) {
-            return $code;
-        }
-    }
-    if (has_filter('wpml_current_language')) {
-        $wpml = (string) apply_filters('wpml_current_language', null);
-        $code = strtolower(substr($wpml, 0, 2));
-        if (in_array($code, ['en', 'es', 'ca'], true)) {
-            return $code;
-        }
-    }
-
-    // 3. WordPress Locale if set to Spanish or Catalan
-    if (function_exists('determine_locale') || function_exists('get_locale')) {
-        $locale = function_exists('determine_locale') ? determine_locale() : get_locale();
-        $wp_code = strtolower(substr((string) $locale, 0, 2));
-        if (in_array($wp_code, ['es', 'ca'], true)) {
-            return $wp_code;
-        }
-    }
-
-    // 4. Browser Accept-Language header
-    $browser_lang = vs_detect_browser_language();
-    if ($browser_lang !== '') {
-        return $browser_lang;
-    }
-
-    // 5. Primary default language is English (en)
-    return 'en';
-}
-
-/** Translate plugin-owned public UI strings with English as primary reference. */
-function vs_front_text($key) {
-    static $translations = [
-        'closed' => ['en' => 'Voting is closed', 'es' => 'Las votaciones están cerradas', 'ca' => 'Les votacions estan tancades'],
-        'starts' => ['en' => 'Voting will start on %s', 'es' => 'Las votaciones comenzarán el %s', 'ca' => 'Les votacions començaran el %s'],
-        'ended' => ['en' => 'Voting ended on %s', 'es' => 'Las votaciones finalizaron el %s', 'ca' => 'Les votacions van finalitzar el %s'],
-        'unauthorized' => ['en' => 'Unauthorized access. Invalid voting token.', 'es' => 'Acceso no autorizado. Token de votación inválido.', 'ca' => 'Accés no autoritzat. El token de votació no és vàlid.'],
-        'ip_denied' => ['en' => 'Your IP address is not authorized to vote.', 'es' => 'Tu dirección IP no está autorizada para votar.', 'ca' => 'La teva adreça IP no està autoritzada per votar.'],
-        'login_required' => ['en' => 'You must log in to vote.', 'es' => 'Debes iniciar sesión para votar.', 'ca' => 'Has d’iniciar sessió per votar.'],
-        'login' => ['en' => 'Log in', 'es' => 'Iniciar sesión', 'ca' => 'Inicia sessió'],
-        'voter_limit' => ['en' => 'The limit of %d voters has been reached', 'es' => 'Se ha alcanzado el límite de %d votantes', 'ca' => 'S’ha assolit el límit de %d votants'],
-        'no_options' => ['en' => 'There are no options available to vote for', 'es' => 'No hay opciones disponibles para votar', 'ca' => 'No hi ha opcions disponibles per votar'],
-        'already_voted' => ['en' => 'You have already voted. Results will be available soon.', 'es' => 'Ya has votado. Los resultados estarán disponibles pronto.', 'ca' => 'Ja has votat, aviat en coneixeràs els resultats.'],
-        'voter_number' => ['en' => 'Voter', 'es' => 'Votante', 'ca' => 'Votant'],
-        'of' => ['en' => 'of', 'es' => 'de', 'ca' => 'de'],
-        'votes_available' => ['en' => 'You have cast %1$s of %2$s available votes', 'es' => 'Has votado %1$s de %2$s votos disponibles', 'ca' => 'Has votat %1$s de %2$s vots disponibles'],
-        'votes_left' => ['en' => '%s votes remaining', 'es' => 'Te quedan %s votos', 'ca' => 'Et queden %s vots'],
-        'votes_used' => ['en' => 'You have used all your votes%s.', 'es' => 'Has agotado todos tus votos%s.', 'ca' => 'Has esgotat tots els teus vots%s.'],
-        'vote' => ['en' => 'Vote', 'es' => 'Votar', 'ca' => 'Vota'],
-        'voted' => ['en' => 'Voted', 'es' => 'Votado', 'ca' => 'Ja has votat'],
-        'vote_badge' => ['en' => '%d votes', 'es' => '%d votos', 'ca' => '%d vots'],
-        'vote_badge_one' => ['en' => '1 vote', 'es' => '1 voto', 'ca' => '1 vot'],
-        'no_votes_yet' => ['en' => 'No votes have been recorded yet.', 'es' => 'No hay votos registrados todavía.', 'ca' => 'Encara no hi ha vots registrats.'],
-        'results' => ['en' => 'Results', 'es' => 'Resultados', 'ca' => 'Resultats'],
-        'total_votes' => ['en' => 'Total votes: %d', 'es' => 'Total de votos: %d', 'ca' => 'Total de vots: %d'],
-        'unique_voters' => ['en' => 'Unique voters: %d', 'es' => 'Votantes únicos: %d', 'ca' => 'Votants únics: %d'],
-        'votes' => ['en' => '%d votes', 'es' => '%d votos', 'ca' => '%d vots'],
-        'type' => ['en' => 'Type: %s', 'es' => 'Tipo: %s', 'ca' => 'Tipus: %s'],
-        'category' => ['en' => 'Category: %s', 'es' => 'Categoría: %s', 'ca' => 'Categoria: %s'],
-        'voting_closed_btn' => ['en' => 'Voting closed', 'es' => 'Votaciones cerradas', 'ca' => 'Votacions tancades'],
-        'voting_closed_notice' => ['en' => 'Voting is currently closed. You can view the participants below.', 'es' => 'Las votaciones están actualmente cerradas. A continuación puedes ver los participantes.', 'ca' => 'Les votacions estan actualment tancades. A continuació podeu veure els participants.'],
-        'simple_mode_notice' => ['en' => 'Simple mode active: 1 vote per voter.', 'es' => 'Modo simple activo: 1 voto por votante.', 'ca' => 'Mode simple actiu: 1 vot per votant.'],
-        'sending_vote' => ['en' => 'Sending vote...', 'es' => 'Enviando voto...', 'ca' => 'Enviant vot...'],
-        'vote_success' => ['en' => 'Vote registered successfully!', 'es' => '¡Voto registrado correctamente!', 'ca' => 'Vot registrat correctament!'],
-        'vote_error' => ['en' => 'Error processing vote', 'es' => 'Error al procesar el voto', 'ca' => 'Error en processar el vot'],
-    ];
-
-    $language = vs_front_language();
-    return isset($translations[$key][$language]) ? $translations[$key][$language] : (isset($translations[$key]['en']) ? $translations[$key]['en'] : (isset($translations[$key]['es']) ? $translations[$key]['es'] : $key));
-}
+require_once VS_PATH . 'includes/i18n.php';
 
 // ============================================
 // 1. ACTIVACIÓN - Crear tablas
@@ -194,6 +88,7 @@ function vs_install() {
     // Opciones por defecto
     add_option('vs_voting_open', false);
     add_option('vs_closed_show_participants', false);
+    add_option('vs_closed_blur_participants', false);
     add_option('vs_voting_mode', 'advanced');
     add_option('vs_show_breakdown', true);
     add_option('vs_voting_start', '');
@@ -1098,16 +993,6 @@ function vs_voting_form($atts = []) {
 
     // Si no hay votos restantes y no estamos en admin y la votación está abierta
     if ($remaining_votes <= 0 && !is_admin() && $is_open) {
-        $filter_text = '';
-        if ($voting_mode !== 'simple') {
-            if (!empty($atts['type']) && !empty($atts['category'])) {
-                $filter_text = ' para tipo "' . esc_html($atts['type']) . '" y categoría "' . esc_html($atts['category']) . '"';
-            } elseif (!empty($atts['type'])) {
-                $filter_text = ' para tipo "' . esc_html($atts['type']) . '"';
-            } elseif (!empty($atts['category'])) {
-                $filter_text = ' para categoría "' . esc_html($atts['category']) . '"';
-            }
-        }
 		return '<div class="vs-closed">' . esc_html(vs_front_text('already_voted')) . '</div>';
     }
 
@@ -1116,16 +1001,7 @@ function vs_voting_form($atts = []) {
     $allow_multiple = ($voting_mode === 'simple') ? false : get_option('vs_allow_multiple_per_option', false);
     
     // Construir mensajes claros según el contexto
-    $filter_text = '';
-    if ($voting_mode !== 'simple') {
-        if (!empty($atts['type']) && !empty($atts['category'])) {
-            $filter_text = ' para tipo "' . esc_html($atts['type']) . '" y categoría "' . esc_html($atts['category']) . '"';
-        } elseif (!empty($atts['type'])) {
-            $filter_text = ' para tipo "' . esc_html($atts['type']) . '"';
-        } elseif (!empty($atts['category'])) {
-            $filter_text = ' para categoría "' . esc_html($atts['category']) . '"';
-        }
-    }
+    $filter_text = ($voting_mode !== 'simple') ? vs_get_scope_filter_text($atts['type'] ?? '', $atts['category'] ?? '') : '';
     
     $header_message = sprintf(vs_front_text('votes_available'), '<strong>' . (int) $voted_count . '</strong>', '<strong>' . (int) $effective_limit . '</strong>') . $filter_text;
     
@@ -1140,9 +1016,15 @@ function vs_voting_form($atts = []) {
     // ID único para el mensaje de este shortcode
     $message_id = 'vs-message-' . uniqid();
     
+    $closed_blur_participants = get_option('vs_closed_blur_participants', false);
+    $container_classes = 'vs-container';
+    if (!$is_open && $closed_show_participants && $closed_blur_participants) {
+        $container_classes .= ' vs-closed-blurred';
+    }
+    
     ob_start();
     ?>
-    <div class="vs-container" data-limit="<?php echo $remaining_votes; ?>" data-max="<?php echo $effective_limit; ?>" data-message-id="<?php echo $message_id; ?>" data-is-open="<?php echo $is_open ? '1' : '0'; ?>" data-show-closed="<?php echo $closed_show_participants ? '1' : '0'; ?>" data-voting-mode="<?php echo esc_attr($voting_mode); ?>">
+    <div class="<?php echo esc_attr($container_classes); ?>" data-limit="<?php echo $remaining_votes; ?>" data-max="<?php echo $effective_limit; ?>" data-message-id="<?php echo $message_id; ?>" data-is-open="<?php echo $is_open ? '1' : '0'; ?>" data-show-closed="<?php echo $closed_show_participants ? '1' : '0'; ?>" data-voting-mode="<?php echo esc_attr($voting_mode); ?>">
         <?php if (!$is_open && $closed_show_participants): ?>
             <div class="vs-closed vs-closed-banner" style="margin-bottom: 20px;">
                 <strong><?php echo esc_html(vs_front_text('closed')); ?>:</strong> <?php echo vs_get_voting_status_message(); ?>
@@ -1365,27 +1247,27 @@ add_action('wp_ajax_vs_vote', 'vs_process_vote');
 add_action('wp_ajax_nopriv_vs_vote', 'vs_process_vote');
 function vs_process_vote() {
     if (!wp_verify_nonce($_POST['nonce'], 'vs_vote_nonce')) {
-        wp_die('Error de seguridad');
+        wp_die(vs_t('security_error'));
     }
 
     global $wpdb;
     $option_id = intval($_POST['option_id']);
     
     if (!vs_is_ip_allowed()) {
-        wp_send_json_error('Tu dirección IP no está autorizada para votar.');
+        wp_send_json_error(vs_t('ip_not_allowed'));
     }
     
     if (get_option('vs_require_registered_user', false) && !is_user_logged_in()) {
-        wp_send_json_error('Debes iniciar sesión para votar.');
+        wp_send_json_error(vs_t('login_required'));
     }
     
     $option = $wpdb->get_row($wpdb->prepare(
         "SELECT * FROM {$wpdb->prefix}vs_options WHERE id = %d",
         $option_id
     ));
-    if (!$option) wp_send_json_error('Opción no válida');
+    if (!$option) wp_send_json_error(vs_t('invalid_option'));
     if (!vs_check_voting_status()) wp_send_json_error(vs_front_text('closed'));
-    if (!vs_check_voter_limit()) wp_send_json_error('Se ha alcanzado el límite de votantes');
+    if (!vs_check_voter_limit()) wp_send_json_error(vs_t('voter_limit_reached'));
 
     $device_id = vs_get_device_id();
 
@@ -1397,7 +1279,7 @@ function vs_process_vote() {
             wp_send_json_error(vs_front_text('already_voted'));
         }
         if (!vs_can_vote_for_option($option_id, $device_id)) {
-            wp_send_json_error('Ya has votado por esta opción');
+            wp_send_json_error(vs_t('already_voted_option'));
         }
     } else {
         // ============================================
@@ -1407,7 +1289,7 @@ function vs_process_vote() {
         if ($global_limit > 0) {
             $global_voted = vs_get_voted_count_by_scope($device_id, 'device');
             if ($global_voted >= $global_limit) {
-                wp_send_json_error('Has agotado tus ' . $global_limit . ' votos totales permitidos.');
+                wp_send_json_error(vs_t('votes_exhausted', $global_limit));
             }
         }
 
@@ -1415,7 +1297,7 @@ function vs_process_vote() {
         // VERIFICAR SI YA VOTÓ POR ESTA OPCIÓN
         // ============================================
         if (!vs_can_vote_for_option($option_id, $device_id)) {
-            wp_send_json_error('Ya has votado por esta opción');
+            wp_send_json_error(vs_t('already_voted_option'));
         }
 
         // ============================================
@@ -1426,7 +1308,7 @@ function vs_process_vote() {
             if (!empty($type_limit) && is_numeric($type_limit) && intval($type_limit) > 0) {
                 $type_voted = vs_get_voted_count_by_scope($device_id, 'type', $option->type);
                 if ($type_voted >= intval($type_limit)) {
-                    wp_send_json_error('Has agotado tus ' . $type_limit . ' votos para tipo "' . esc_html($option->type) . '"');
+                    wp_send_json_error(vs_t('type_votes_exhausted', intval($type_limit), $option->type));
                 }
             }
         }
@@ -1439,7 +1321,7 @@ function vs_process_vote() {
             if (!empty($category_limit) && is_numeric($category_limit) && intval($category_limit) > 0) {
                 $category_voted = vs_get_voted_count_by_scope($device_id, 'category', $option->category);
                 if ($category_voted >= intval($category_limit)) {
-                    wp_send_json_error('Has agotado tus ' . $category_limit . ' votos para categoría "' . esc_html($option->category) . '"');
+                    wp_send_json_error(vs_t('category_votes_exhausted', intval($category_limit), $option->category));
                 }
             }
         }
@@ -1491,7 +1373,7 @@ function vs_process_vote() {
     $refresh = get_option('vs_refresh_after_vote', true);
     
     $response_data = [
-        'message' => 'Vot registrat correctament!',
+        'message' => vs_t('vote_success'),
         'refresh' => $refresh
     ];
     
@@ -1562,16 +1444,7 @@ function vs_ajax_get_voter_state() {
         $votes_by_option[intval($row->option_id)] = intval($row->count);
     }
     
-    $filter_text = '';
-    if ($voting_mode !== 'simple') {
-        if (!empty($atts['type']) && !empty($atts['category'])) {
-            $filter_text = ' para tipo "' . esc_html($atts['type']) . '" y categoría "' . esc_html($atts['category']) . '"';
-        } elseif (!empty($atts['type'])) {
-            $filter_text = ' para tipo "' . esc_html($atts['type']) . '"';
-        } elseif (!empty($atts['category'])) {
-            $filter_text = ' para categoría "' . esc_html($atts['category']) . '"';
-        }
-    }
+    $filter_text = ($voting_mode !== 'simple') ? vs_get_scope_filter_text($atts['type'] ?? '', $atts['category'] ?? '') : '';
     
     $header_message = sprintf(vs_front_text('votes_available'), '<strong>' . (int) $voted_count . '</strong>', '<strong>' . (int) $effective_limit . '</strong>') . $filter_text;
     
@@ -1611,8 +1484,8 @@ function vs_ajax_get_voter_state() {
 add_action('admin_menu', 'vs_admin_menu');
 function vs_admin_menu() {
     add_menu_page(
-        'Votaciones',
-        'Votaciones',
+        vs_t('menu_voting'),
+        vs_t('menu_voting'),
         'manage_options',
         'vs-voting',
         'vs_admin_page',
@@ -1621,48 +1494,56 @@ function vs_admin_menu() {
     );
     add_submenu_page(
         'vs-voting',
-        'Añadir Opción',
-        'Añadir Opción',
+        vs_t('menu_options'),
+        vs_t('menu_options'),
+        'manage_options',
+        'vs-voting',
+        'vs_admin_page'
+    );
+    add_submenu_page(
+        'vs-voting',
+        vs_t('menu_add_option'),
+        vs_t('menu_add_option'),
         'manage_options',
         'vs-add-option',
         'vs_add_option_page'
     );
     add_submenu_page(
         'vs-voting',
-        'Configuración',
-        'Configuración',
+        vs_t('menu_settings'),
+        vs_t('menu_settings'),
         'manage_options',
         'vs-settings',
         'vs_settings_page'
     );
     add_submenu_page(
         'vs-voting',
-        'Seguridad',
-        'Seguridad',
+        vs_t('menu_security'),
+        vs_t('menu_security'),
         'manage_options',
         'vs-security',
         'vs_security_page'
     );
     add_submenu_page(
         'vs-voting',
-        'Auditoría',
-        'Auditoría',
+        vs_t('menu_audit'),
+        vs_t('menu_audit'),
         'manage_options',
         'vs-audit',
         'vs_audit_page'
     );
     add_submenu_page(
         'vs-voting',
-        'Vista Previa',
-        'Vista Previa',
+        vs_t('menu_preview'),
+        vs_t('menu_preview'),
         'manage_options',
         'vs-preview',
         'vs_preview_page'
     );
     add_submenu_page(
         'vs-voting',
-        'Resetear Tokens',
-        'Resetear Tokens',
+        vs_t('menu_reset_tokens'),
+        vs_t('menu_reset_tokens'),
         'manage_options',
         'vs-reset-tokens',
         'vs_reset_tokens_page'
@@ -1701,19 +1582,19 @@ function vs_admin_page() {
     $unique_voters = $wpdb->get_var("SELECT COUNT(DISTINCT device_id) FROM {$wpdb->prefix}vs_votes");
     ?>
     <div class="wrap">
-        <h1>Gestión de Votaciones</h1>
+        <h1><?php vs_e('admin_title'); ?></h1>
         
         <div class="vs-admin-box vs-shortcodes-info">
-            <h2>Shortcodes disponibles</h2>
+            <h2><?php vs_e('shortcodes_title'); ?></h2>
             <div class="vs-shortcode-grid">
                 <div class="vs-shortcode-item">
                     <code>[voting_form]</code>
-                    <span>Formulario de votación</span>
-                    <span class="vs-shortcode-attrs">Atributos: type, category, limit (límite de votos)</span>
+                    <span><?php vs_e('shortcode_form_desc'); ?></span>
+                    <span class="vs-shortcode-attrs">Atributos: type, category, limit</span>
                 </div>
                 <div class="vs-shortcode-item">
                     <code>[voting_results]</code>
-                    <span>Resultados de la votación</span>
+                    <span><?php vs_e('shortcode_results_desc'); ?></span>
                     <span class="vs-shortcode-attrs">Atributos: type, category, view, show_percentage, show_numbers, show_images, limit</span>
                 </div>
             </div>
@@ -1721,31 +1602,31 @@ function vs_admin_page() {
         </div>
         
         <div class="vs-admin-box">
-            <h2>Estadísticas</h2>
+            <h2><?php vs_e('admin_stats'); ?></h2>
             <ul>
-                <li><strong>Votos totales:</strong> <?php echo count($votes); ?></li>
-                <li><strong>Votantes únicos:</strong> <?php echo $unique_voters; ?></li>
-                <li><strong>Opciones:</strong> <?php echo count($options); ?></li>
+                <li><strong><?php vs_e('total_votes', count($votes)); ?></strong></li>
+                <li><strong><?php vs_e('unique_voters', (int)$unique_voters); ?></strong></li>
+                <li><strong><?php vs_e('admin_available_options', count($options)); ?></strong></li>
             </ul>
         </div>
         
         <div class="vs-admin-box">
-            <h2>Opciones disponibles (<?php echo count($options); ?>)</h2>
+            <h2><?php vs_e('admin_available_options', count($options)); ?></h2>
             <form method="post" style="margin-bottom: 15px;">
-                <button type="submit" name="vs_delete_all_options" class="button button-danger" onclick="return confirm('¿Eliminar TODAS las opciones y votos?')">
-                    Eliminar todas las opciones
+                <button type="submit" name="vs_delete_all_options" class="button button-danger" onclick="return confirm('<?php echo esc_js(vs_t('confirm_delete_all')); ?>')">
+                    <?php vs_e('delete_all_votes'); ?>
                 </button>
             </form>
             
             <table class="wp-list-table widefat fixed vs-sortable-table">
                 <thead>
                     <tr>
-                        <th class="sortable" data-sort="id">ID <span class="sort-indicator">↕</span></th>
-                        <th>Imagen</th>
-                        <th class="sortable" data-sort="title">Título <span class="sort-indicator">↕</span></th>
-                        <th class="sortable" data-sort="type">Tipo <span class="sort-indicator">↕</span></th>
-                        <th class="sortable" data-sort="category">Categoría <span class="sort-indicator">↕</span></th>
-                        <th>Acciones</th>
+                        <th class="sortable" data-sort="id"><?php vs_e('th_id'); ?> <span class="sort-indicator">↕</span></th>
+                        <th><?php vs_e('th_photo'); ?></th>
+                        <th class="sortable" data-sort="title"><?php vs_e('th_title'); ?> <span class="sort-indicator">↕</span></th>
+                        <th class="sortable" data-sort="type"><?php vs_e('th_type'); ?> <span class="sort-indicator">↕</span></th>
+                        <th class="sortable" data-sort="category"><?php vs_e('th_category'); ?> <span class="sort-indicator">↕</span></th>
+                        <th><?php vs_e('th_actions'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1826,6 +1707,7 @@ function vs_settings_page() {
     if (isset($_POST['vs_save_settings'])) {
         update_option('vs_voting_open', isset($_POST['vs_voting_open']));
         update_option('vs_closed_show_participants', isset($_POST['vs_closed_show_participants']));
+        update_option('vs_closed_blur_participants', isset($_POST['vs_closed_blur_participants']));
         update_option('vs_show_breakdown', isset($_POST['vs_show_breakdown']));
         update_option('vs_voting_auto_open', isset($_POST['vs_voting_auto_open']));
         update_option('vs_voting_auto_close', isset($_POST['vs_voting_auto_close']));
@@ -1858,6 +1740,7 @@ function vs_settings_page() {
     
     $is_open = get_option('vs_voting_open', false);
     $closed_show_participants = get_option('vs_closed_show_participants', false);
+    $closed_blur_participants = get_option('vs_closed_blur_participants', false);
     $voting_mode = get_option('vs_voting_mode', 'advanced');
     $show_breakdown = get_option('vs_show_breakdown', true);
     $auto_open = get_option('vs_voting_auto_open', false);
@@ -1881,47 +1764,57 @@ function vs_settings_page() {
     $unique_voters = $wpdb->get_var("SELECT COUNT(DISTINCT device_id) FROM {$wpdb->prefix}vs_votes");
     ?>
     <div class="wrap">
-        <h1>Configuración del Sistema de Votaciones</h1>
+        <h1><?php vs_e('settings_title'); ?></h1>
         
         <form method="post">
             <div class="vs-admin-box">
-                <h2>Control de Votaciones</h2>
+                <h2><?php vs_e('control_section'); ?></h2>
                 <table class="form-table">
                     <tr>
-                        <th>Estado actual</th>
+                        <th><?php vs_e('current_status'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_voting_open" <?php checked($is_open); ?>>
-                                Votaciones abiertas
+                                <?php vs_e('status_open'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
-                        <th>Participantes al cerrar</th>
+                        <th><?php vs_e('closed_show_participants'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_closed_show_participants" <?php checked($closed_show_participants); ?>>
-                                Mostrar participantes cuando las votaciones estén cerradas
+                                <?php vs_e('closed_show_participants'); ?>
                             </label>
                             <p class="description">Mantiene visible la lista de participantes con un aviso de cierre y los botones deshabilitados ("Votaciones cerradas").</p>
                         </td>
                     </tr>
                     <tr>
-                        <th>Apertura automática</th>
+                        <th><?php vs_e('closed_blur_participants'); ?></th>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="vs_closed_blur_participants" <?php checked($closed_blur_participants); ?>>
+                                <?php vs_e('closed_blur_participants'); ?>
+                            </label>
+                            <p class="description">Aplica un desenfoque de privacidad a las fotos de los participantes únicamente cuando las votaciones estén cerradas.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><?php vs_e('auto_open'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_voting_auto_open" <?php checked($auto_open); ?>>
-                                Abrir automáticamente
+                                <?php vs_e('auto_open'); ?>
                             </label>
                             <input type="datetime-local" name="vs_voting_start" value="<?php echo esc_attr($start); ?>">
                         </td>
                     </tr>
                     <tr>
-                        <th>Cierre automático</th>
+                        <th><?php vs_e('auto_close'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_voting_auto_close" <?php checked($auto_close); ?>>
-                                Cerrar automáticamente
+                                <?php vs_e('auto_close'); ?>
                             </label>
                             <input type="datetime-local" name="vs_voting_end" value="<?php echo esc_attr($end); ?>">
                         </td>
@@ -1930,42 +1823,42 @@ function vs_settings_page() {
             </div>
             
             <div class="vs-admin-box">
-                <h2>Modo de Votación y Límites</h2>
+                <h2><?php vs_e('mode_section'); ?></h2>
                 <table class="form-table">
                     <tr>
-                        <th>Modo de votación</th>
+                        <th><?php vs_e('voting_mode'); ?></th>
                         <td>
                             <div class="vs-mode-switch-wrapper">
                                 <label class="vs-mode-card <?php echo $voting_mode === 'simple' ? 'active' : ''; ?>">
                                     <input type="radio" name="vs_voting_mode" value="simple" <?php checked($voting_mode, 'simple'); ?> class="vs-mode-radio">
-                                    <span class="vs-mode-card-title">⚡ Modo Simple</span>
-                                    <span class="vs-mode-card-desc">1 voto por dispositivo indiferente de categorías o tipos. Las opciones por categoría y tipo se anulan y se ocultan.</span>
+                                    <span class="vs-mode-card-title">⚡ <?php vs_e('simple_mode_title'); ?></span>
+                                    <span class="vs-mode-card-desc"><?php vs_e('simple_mode_desc'); ?></span>
                                 </label>
                                 <label class="vs-mode-card <?php echo $voting_mode === 'advanced' ? 'active' : ''; ?>">
                                     <input type="radio" name="vs_voting_mode" value="advanced" <?php checked($voting_mode, 'advanced'); ?> class="vs-mode-radio">
-                                    <span class="vs-mode-card-title">⚙️ Modo Avanzado</span>
-                                    <span class="vs-mode-card-desc">Permite configurar límites de votos por categoría, por tipo, y votos múltiples por opción.</span>
+                                    <span class="vs-mode-card-title">⚙️ <?php vs_e('advanced_mode_title'); ?></span>
+                                    <span class="vs-mode-card-desc"><?php vs_e('advanced_mode_desc'); ?></span>
                                 </label>
                             </div>
                         </td>
                     </tr>
                     <tr class="vs-simple-only-notice" <?php echo $voting_mode === 'simple' ? '' : 'style="display:none;"'; ?>>
-                        <th>Reglas del Modo Simple</th>
+                        <th><?php vs_e('simple_rules'); ?></th>
                         <td>
                             <div class="notice notice-info inline" style="margin: 0; padding: 12px 16px;">
-                                <p style="margin: 0;"><strong>ℹ️ Modo Simple activo:</strong> Cada votante dispone de exactamente <strong>1 voto total</strong> para todo el concurso, sin distinción de categorías o tipos. Las configuraciones avanzadas de votos por categoría o tipo están anuladas y ocultas para simplificar la gestión.</p>
+                                <p style="margin: 0;"><strong>ℹ️ <?php vs_e('simple_mode_notice'); ?></strong> <?php vs_e('simple_mode_desc'); ?></p>
                             </div>
                         </td>
                     </tr>
                     <tr class="vs-advanced-field" <?php echo $voting_mode === 'simple' ? 'style="display:none;"' : ''; ?>>
-                        <th>Votos por dispositivo</th>
+                        <th><?php vs_e('votes_per_device'); ?></th>
                         <td>
                             <input type="number" name="vs_votes_per_device" value="<?php echo esc_attr($votes_per_device); ?>" min="0" max="100">
                             <p class="description">Número total de votos permitidos por dispositivo (0 = sin límite)</p>
                         </td>
                     </tr>
                     <tr class="vs-advanced-field" <?php echo $voting_mode === 'simple' ? 'style="display:none;"' : ''; ?>>
-                        <th>Límite por categoría</th>
+                        <th><?php vs_e('votes_per_category'); ?></th>
                         <td>
                             <input type="number" name="vs_votes_per_category" value="<?php echo esc_attr($votes_per_category); ?>" min="0" max="100" placeholder="Dejar vacío para sin límite">
                             <p class="description">Votos máximos por categoría (por dispositivo)</p>
@@ -1975,7 +1868,7 @@ function vs_settings_page() {
                         </td>
                     </tr>
                     <tr class="vs-advanced-field" <?php echo $voting_mode === 'simple' ? 'style="display:none;"' : ''; ?>>
-                        <th>Límite por tipo</th>
+                        <th><?php vs_e('votes_per_type'); ?></th>
                         <td>
                             <input type="number" name="vs_votes_per_type" value="<?php echo esc_attr($votes_per_type); ?>" min="0" max="100" placeholder="Dejar vacío para sin límite">
                             <p class="description">Votos máximos por tipo (por dispositivo)</p>
@@ -1985,7 +1878,7 @@ function vs_settings_page() {
                         </td>
                     </tr>
                     <tr class="vs-advanced-field" <?php echo $voting_mode === 'simple' ? 'style="display:none;"' : ''; ?>>
-                        <th>Múltiples votos por opción</th>
+                        <th><?php vs_e('allow_multiple_per_option'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_allow_multiple_per_option" <?php checked($allow_multiple); ?>>
@@ -1995,7 +1888,7 @@ function vs_settings_page() {
                         </td>
                     </tr>
                     <tr>
-                        <th>Límite de votantes</th>
+                        <th><?php vs_e('voter_limit_field'); ?></th>
                         <td>
                             <input type="number" name="vs_max_voters" value="<?php echo esc_attr($max_voters); ?>" min="0" max="99999">
                             <p class="description">Número máximo de votantes únicos (0 = sin límite)</p>
@@ -2005,11 +1898,11 @@ function vs_settings_page() {
                         </td>
                     </tr>
                     <tr>
-                        <th>Requerir usuario registrado</th>
+                        <th><?php vs_e('require_registered_user'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_require_registered_user" <?php checked($require_registered); ?>>
-                                Solo usuarios registrados pueden votar
+                                <?php vs_e('require_registered_user'); ?>
                             </label>
                             <p class="description">Los votantes deben iniciar sesión en WordPress para votar</p>
                         </td>
@@ -2018,7 +1911,7 @@ function vs_settings_page() {
             </div>
 
             <div class="vs-admin-box vs-cache-guide-box">
-                <h2>⚡ Rendimiento y Compatibilidad con Plugins de Caché</h2>
+                <h2><?php vs_e('cache_guide_title'); ?></h2>
                 <p>El plugin está optimizado para funcionar con plugins de caché de página como <strong>WP Rocket, WP Super Cache, LiteSpeed Cache, W3 Total Cache, FastCGI Cache</strong> y CDNs (Cloudflare).</p>
                 <div class="vs-cache-columns">
                     <div class="vs-cache-col">
@@ -2041,10 +1934,10 @@ function vs_settings_page() {
             </div>
             
             <div class="vs-admin-box">
-                <h2>Configuración de Resultados</h2>
+                <h2><?php vs_e('results_settings_title'); ?></h2>
                 <table class="form-table">
                     <tr>
-                        <th>Vista por defecto</th>
+                        <th><?php vs_e('default_view'); ?></th>
                         <td>
                             <select name="vs_results_default_view">
                                 <option value="simple" <?php selected($default_view, 'simple'); ?>>Simple</option>
@@ -2053,47 +1946,47 @@ function vs_settings_page() {
                         </td>
                     </tr>
                     <tr>
-                        <th>Mostrar imágenes</th>
+                        <th><?php vs_e('show_images'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_results_show_images" <?php checked($show_images); ?>>
-                                Mostrar imágenes de las opciones en los resultados
+                                <?php vs_e('show_images'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
-                        <th>Mostrar porcentajes</th>
+                        <th><?php vs_e('show_percentages'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_results_show_percentage" <?php checked($show_percentage); ?>>
-                                Mostrar porcentajes en los resultados
+                                <?php vs_e('show_percentages'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
-                        <th>Mostrar números</th>
+                        <th><?php vs_e('show_numbers'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_results_show_numbers" <?php checked($show_numbers); ?>>
-                                Mostrar número de votos en los resultados
+                                <?php vs_e('show_numbers'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
-                        <th>Desglose por opciones</th>
+                        <th><?php vs_e('show_breakdown'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_show_breakdown" <?php checked($show_breakdown); ?>>
-                                Mostrar desglose detallado
+                                <?php vs_e('show_breakdown'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
-                        <th>Recargar después de votar</th>
+                        <th><?php vs_e('refresh_after_vote'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="vs_refresh_after_vote" <?php checked($refresh); ?>>
-                                Recargar la página después de votar
+                                <?php vs_e('refresh_after_vote'); ?>
                             </label>
                         </td>
                     </tr>
@@ -2101,7 +1994,7 @@ function vs_settings_page() {
             </div>
             
             <p class="submit">
-                <button type="submit" name="vs_save_settings" class="button button-primary">Guardar configuración</button>
+                <button type="submit" name="vs_save_settings" class="button button-primary"><?php vs_e('btn_save'); ?></button>
             </p>
         </form>
     </div>

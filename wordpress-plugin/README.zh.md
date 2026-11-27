@@ -1,85 +1,67 @@
-# WordPress 投票系统（现代竞赛版）
+# WordPress Voting System（现代竞赛投票插件版）
 
-专为 WordPress 打造的高性能投票插件，具备 **极简模式**（每位投票者/设备限投 1 票）、**高级分类限制**、**投票截止后参赛者保持可见** 以及 **100% 兼容各类全页缓存插件的动态 AJAX 状态水合**（WP Super Cache、WP Rocket、LiteSpeed Cache）。内置隐私保护模糊机制、基于设备指纹的反作弊检测，并提供完整的国际化多语言支持（英语、西班牙语、加泰罗尼亚语）。
-
----
-
-## 🌟 核心特性
-
-### 1. 极简模式与高级模式一键切换
-- **极简模式（全局每人 1 票）**：
-  - 将所有参赛者视为统一候选池，忽略分类或类型的差异。
-  - 严格限制每个投票者/设备仅限投出 **1 票**。
-  - 在 `设置 > 投票系统` 中提供交互式卡片切换开关。
-  - 激活极简模式后，后台自动隐藏复杂的分类配额及多票设置字段，带来清爽专注的管理体验。
-- **高级模式**：
-  - 支持按分类、按类型或全局设定独立的投票上限。
-  - 可选允许对同一参赛者投出多票。
-
-### 2. 投票截止后参赛者依然保持可见
-- 全新选项：**“投票关闭时显示参赛者”** (`vs_closed_show_participants`)。
-- 当投票截止（手动关闭或排期结束）时：
-  - 页面顶部显示清晰的状态提示横幅。
-  - 所有参赛者保持完整展示（包括头像、姓名、分类及类型描述）。
-  - 所有投票按钮锁定为禁用状态（`disabled`），并应用 `.vs-btn-closed` 样式及本地化提示文字：**"Voting closed"**（英文）/ **"Votaciones cerradas"**（西文）/ **"Votacions tancades"**（加泰文）。
-
-### 3. 高性能静态缓存与动态 AJAX 状态水合
-- **痛点解决**：全页缓存插件经常会导致向用户展示陈旧的 HTML 页面（例如已投票的用户依然看到“已投 0/1 票”）或过期的安全 Nonce 令牌。
-- **架构方案**：
-  - 参赛者网格列表、图片及 HTML 结构通过 WP Super Cache、WP Rocket、LiteSpeed Cache 或 CDN（Cloudflare）实现 **100% 静态缓存**，极大减轻高并发流量下的服务器负载。
-  - 页面加载后，客户端通过超轻量异步接口 (`vs_get_voter_state`) 查询当前设备的实际投票状态。
-  - 动态刷新安全 Nonce 令牌，确保在静态缓存页面上永远不会过期失效。
-  - 动态水合剩余票数、禁用已用尽的按钮，并在已投选项上标记 **“✓ Voted”** 徽章。
-  - 在 WordPress 后台直接内置了详尽的 **缓存插件兼容性优化指南**。
-
-### 4. 支持自动检测的多语言引擎
-- **首要语言**：英语 (`en`)。
-- **支持语言**：英语 (`en`)、西班牙语 (`es`)、加泰罗尼亚语 (`ca`)。
-- **语言检测优先级**：
-  1. URL 参数 (`?lang=en|es|ca`) 或 Cookie (`vs_lang`)。
-  2. Polylang / WPML 当前激活语言。
-  3. WordPress 站点语言环境 (`determine_locale()` / `get_locale()`)。
-  4. 浏览器 `Accept-Language` 标头。
-  5. 默认回退语言：英语 (`en`)。
-
-### 5. 经典竞赛视觉设计与隐私保护
-- 灵感源自经典赛事评选界面：
-  - 经典的酒红色主视觉风格（`#6E1F2D`）搭配优雅的金色悬停微光（`#a67c4c`）。
-  - 圆形头像展示（`aspect-ratio: 1/1; border-radius: 50%`）。
-  - 内置针对演示与审计环境的视觉磨砂模糊隐私保护机制。
-  - 移动优先、完全响应式的高适应网格布局。
+[![最新版本](https://img.shields.io/github/v/release/christiancabrero/voting-system?color=blue&label=最新版本 )](https://github.com/christiancabrero/voting-system/releases/latest)
+[![PHP](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
+[![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
+[![License](https://img.shields.io/badge/License-GPLv2-green.svg)](#license)
 
 ---
 
-## 📸 界面截图
-
-![前台开放投票（极简模式）](screenshots/01-frontend-open-simple-mode.png)
-*01. 前台开放投票（极简模式）*
-
-![投票完成后（投票额度耗尽状态）](screenshots/02-vote-cast-exhausted-state.png)
-*02. 投票完成后（投票额度耗尽状态）*
-
-![投票截止后（参赛者依然可见）](screenshots/03-voting-closed-participants-visible.png)
-*03. 投票截止后（参赛者依然可见）*
-
-![管理后台极简 / 高级模式切换](screenshots/04-backend-simple-mode-switcher.png)
-*04. 管理后台极简 / 高级模式切换*
-
-![缓存插件兼容性优化指南](screenshots/05-backend-cache-compatibility-guide.png)
-*05. 缓存插件兼容性优化指南*
+## 📥 [Download Latest Release](https://github.com/christiancabrero/voting-system/releases/latest)
 
 ---
 
-## 🚀 安装与使用
+## 📸 功能截图
 
-1. 将 `voting-system` 文件夹复制到 WordPress 的 `wp-content/plugins/` 目录中。
-2. 在 WordPress 后台菜单（`插件 > 已安装插件`）中激活该插件。
-3. 前往 **投票系统 > 设置**：
-   - 选择 **极简模式**（全局 1 票）或 **高级模式**。
-   - 根据需求开启 **“投票关闭时显示参赛者”**。
-   - 配置自动排期时间或进行手动开关控制。
-4. 在 **投票系统 > 添加参赛者** 中录入候选人。
-5. 在任意页面或文章中使用简码嵌入投票表单：
-   ```text
-   [voting_form]
-   ```
+![01. Frontend Open](screenshots/01-frontend-open-simple-mode.png)
+*01. 前台开放投票（简易模式） — 选手照片清晰无模糊，分类标签独立排列在按钮上方，投票按钮固定在卡片底部。*
+
+![02. Post-Vote Exhausted State](screenshots/02-vote-cast-exhausted-state.png)
+*02. 投票完成状态（名额用尽） — 动态实时响应；已投选手高亮展示“✓ 已投”，其余卡片投票按钮自动锁定。*
+
+![03. Closed Voting with Participants](screenshots/03-voting-closed-participants-visible.png)
+*03. 投票关闭状态（候选人依然可见） — 顶部显示截止提示横幅，所有候选人依然清晰展示（虚化效果为可配置项）。*
+
+![04. Backend Simple / Advanced Mode Switch](screenshots/04-backend-simple-mode-switcher.png)
+*04. 管理后台模式切换与参数配置 — 简易模式（严格每人1票）与高级多分类投票模式一键切换。*
+
+![05. Cache Compatibility Guide](screenshots/05-backend-cache-compatibility-guide.png)
+*05. 缓存插件兼容性设置指南 — 后台内置指南，详细说明动态 Nonce 鉴权与用户投票状态异步加载机制。*
+
+![08. Results & Breakdown](screenshots/08-wp-admin-results-breakdown.png)
+*08. 实时票数与开票结果明细 — WordPress 后台直观展示得票数、百分比进度条与选手排名。*
+
+![09. Audit & Votes Trail](screenshots/09-wp-admin-audit-votes.png)
+*09. 投票审计与风控追踪日志 — 独立记录选票的设备指纹识别码、客户端 IP、投票 Token 与精确时间戳。*
+
+![10. Security Settings](screenshots/10-wp-admin-security-settings.png)
+*10. 安全与防刷票策略设置 — IP 白名单/黑名单过滤、请求速率限制以及最大选民数配额控制。*
+
+---
+
+## 📝 简码（Shortcodes）使用文档
+
+### 1. `[voting_form]`
+- `category=""`: Filter contestants by category.
+- `type=""`: Filter contestants by type.
+- `limit="0"`: Custom vote quota for this form.
+- `columns="3"`: Grid desktop columns (`2`, `3`, `4`).
+- `show_results="0"`: Display results below voting cards.
+
+### 2. `[voting_results]`
+- `category=""`: Filter results by category.
+- `type=""`: Filter results by type.
+- `show_percentages="1"`: Show percentage bars.
+- `show_numbers="1"`: Show total vote counts.
+- `show_breakdown="1"`: Detailed contestants breakdown.
+
+---
+
+## 🌍 国际化多语言支持 (i18n)
+系统全面原生支持 7 种语言：英语 (en)、西班牙语 (es)、加泰罗尼亚语 (ca)、葡萄牙语 (pt)、法语 (fr)、日语 (ja)、中文 (zh)。
+语言字典以独立 PHP 文件存放在 `languages/{lang}.php`，扩展极其简便。
+
+---
+
+## 📄 开源协议
+- GNU General Public License v2 (GPLv2)

@@ -1,136 +1,162 @@
 # Voting System
 
-## Pure PHP 独立版与 WordPress 插件版
+## Pure PHP version & WordPress Plugin version
 
-[![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
+[![最新版本](https://img.shields.io/github/v/release/christiancabrero/voting-system?color=blue&label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)](https://github.com/christiancabrero/voting-system/releases/latest)
+[![PHP版本](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
-[![License](https://img.shields.io/badge/License-GPLv2%20%2F%20MIT-green.svg)](#许可证)
-[![Languages](https://img.shields.io/badge/i18n-EN%20%7C%20ES%20%7C%20CA-purple.svg)](#国际化支持)
-[![Concurrency](https://img.shields.io/badge/Throughput-750%2B%20req%2Fsec-success.svg)](#性能与并发基准测试)
+[![开源协议](https://img.shields.io/badge/License-GPLv2%20%2F%20MIT-green.svg)](#开源协议)
+[![国际化语言](https://img.shields.io/badge/i18n-7%E7%A7%8D%E8%AF%AD%E8%A8%80%20(EN%20%7C%20ES%20%7C%20CA%20%7C%20PT%20%7C%20FR%20%7C%20JA%20%7C%20ZH)-purple.svg)](#国际化多语言支持-i18n)
+[![高并发吞吐量](https://img.shields.io/badge/Throughput-750%2B%20req%2Fsec-success.svg)](#性能与高并发)
 
-**Voting System** 是一套可直接用于生产环境的双版本投票系统架构，专为 WordPress 内容管理生态系统以及超高并发独立 Web 环境量身打造：
+**Voting System** 是一套面向生产环境设计的双版本投票系统架构，专为 WordPress 内容管理生态系统以及超高并发独立部署环境量身打造：
 
-1. [**WordPress 插件版 (`v3.4.0`)**](wordpress-plugin/)：功能完备的 WordPress 官方插件，具备极简/高级模式无缝切换、投票截止后参赛者保持可见、圆形磨砂模糊隐私设计，以及 100% 兼容各类全页缓存插件（WP Super Cache、WP Rocket、LiteSpeed Cache）的动态 AJAX 状态水合技术。
-2. [**高并发 Pure PHP 独立版 (`v2.0.0`)**](pure-php/)：零框架依赖的超轻量独立引擎，采用生产者-消费者（Producer-Consumer）WAL 队列架构、无会话锁定的 HMAC CSRF 防御机制以及 SQLite/MySQL ACID 事务串行化，支持 **每秒 750+ 次并发请求**，实现零数据库锁争用与 100% 竞态条件免疫。
+1. [**WordPress 插件版**](wordpress-plugin/)：功能完备的 WP 插件，支持简易/高级模式切换、投票截止时依然展示候选人、去虚化的高清选手照片、固定在卡片底部的投票按钮、防刷票设备指纹追踪，以及 100% 兼容各类全页缓存（WP Super Cache、WP Rocket、LiteSpeed）的动态 AJAX 水合架构。
+2. [**Pure PHP 纯代码高并发版**](pure-php/)：基于生产者-消费者（Producer-Consumer）模型的 SQLite WAL 内存队列独立引擎，支持 Session 安全验证管理后台、基于文件的独立语言包（`languages/*.php`），具备完全无锁冲突的 ACID 原子性串行化能力，轻松承载**每秒 750+ 次连续高并发投票写入**。
 
 ---
 
-## 📖 文档语言 / Translations / Documentación / ドキュメント
+## 📖 多语言文档导航
 
 - 🇬🇧 **[English Documentation](README.md)**
 - 🇪🇸 **[Documentación en Español](README.es.md)**
+- 🏴 **[Documentació en Català](README.ca.md)**
+- 🇵🇹 **[Documentação em Português](README.pt.md)**
+- 🇫🇷 **[Documentation en Français](README.fr.md)**
 - 🇯🇵 **[日本語ドキュメント](README.ja.md)**
-- 🇨🇳 **[中文文档（当前语言）](README.zh.md)**
+- 🇨🇳 **[中文文档（当前）](README.zh.md)**
 
 ---
 
-## 📸 界面展示（两个版本）
+## 📥 下载与最新版本
 
-### 🌟 1. WordPress 插件版 (`v3.4.0`)
+请始终通过下方官方链接下载最新的稳定发行包：
+👉 **[下载最新版本 (Releases)](https://github.com/christiancabrero/voting-system/releases/latest)**
 
-![01. 前台开放投票（极简模式）](screenshots/01-wp-frontend-open-simple-mode.png)
-*01. 前台开放投票（极简模式） — 每位投票者全局限投 1 票，自适应响应式网格布局*
+---
 
-![02. 投票完成后（投票额度耗尽状态）](screenshots/02-wp-vote-cast-exhausted-state.png)
-*02. 投票完成后（投票额度耗尽状态） — 已投选项标记为“✓ Voted”，其余按钮自动锁定禁用*
+## 📸 功能实测截图
 
-![03. 投票截止后（参赛者依然可见）](screenshots/03-wp-voting-closed-participants-visible.png)
-*03. 投票截止后（参赛者依然可见） — 顶部显示截止提示横幅，参赛者图文信息保持完整展示*
+### 🌟 1. WordPress 插件版
 
-![04. 管理后台极简 / 高级模式切换](screenshots/04-wp-backend-simple-mode-switcher.png)
-*04. 管理后台极简 / 高级模式切换 — 交互式卡片设计，激活极简模式时自动隐藏复杂分类限制*
+![01. 前台开放投票（简易模式）](screenshots/01-wp-frontend-open-simple-mode.png)
+*01. 前台开放投票（简易模式） — 选手照片清晰无模糊，分类标签独立排列在按钮上方，投票按钮固定在卡片底部。*
 
-![05. 缓存插件兼容性优化指南](screenshots/05-wp-backend-cache-compatibility-guide.png)
-*05. 缓存插件兼容性优化指南 — 后台内置针对 WP Super Cache 等插件的配置与性能优化指引*
+![02. 投票完成状态（名额用尽）](screenshots/02-wp-vote-cast-exhausted-state.png)
+*02. 投票完成状态（名额用尽） — 动态实时响应；已投选手高亮展示“✓ 已投”，其余卡片投票按钮自动锁定。*
 
-### ⚡ 2. 高并发 Pure PHP 独立版 (`v2.0.0`)
+![03. 投票关闭状态（候选人依然可见）](screenshots/03-wp-voting-closed-participants-visible.png)
+*03. 投票关闭状态（候选人依然可见） — 顶部显示截止提示横幅，所有候选人依然清晰展示（虚化效果为可配置项）。*
+
+![04. 管理后台模式切换与参数配置](screenshots/04-wp-backend-simple-mode-switcher.png)
+*04. 管理后台模式切换与参数配置 — 简易模式（严格每人1票）与高级多分类投票模式一键切换。*
+
+![05. 缓存插件兼容性设置指南](screenshots/05-wp-backend-cache-compatibility-guide.png)
+*05. 缓存插件兼容性设置指南 — 后台内置指南，详细说明动态 Nonce 鉴权与用户投票状态异步加载机制。*
+
+![08. 实时票数与开票结果明细](screenshots/08-wp-admin-results-breakdown.png)
+*08. 实时票数与开票结果明细 — WordPress 后台直观展示得票数、百分比进度条与选手排名。*
+
+![09. 投票审计与风控追踪日志](screenshots/09-wp-admin-audit-votes.png)
+*09. 投票审计与风控追踪日志 — 独立记录选票的设备指纹识别码、客户端 IP、投票 Token 与精确时间戳。*
+
+![10. 安全与防刷票策略设置](screenshots/10-wp-admin-security-settings.png)
+*10. 安全与防刷票策略设置 — IP 白名单/黑名单过滤、请求速率限制以及最大选民数配额控制。*
+
+---
+
+### ⚡ 2. Pure PHP 纯代码高并发版
 
 ![06. 独立公开前台界面](screenshots/06-pure-php-frontend-live.png)
-*06. 独立公开前台界面 — 带有语言切换栏（EN/ES/CA）的超轻量响应式投票界面*
+*06. 独立公开前台界面 — 现代化响应式卡片，支持 7 种语言切换（EN、ES、CA、PT、FR、JP、CN），实时榜单排名。*
+
+![11. 管理后台登录验证网关](screenshots/11-pure-php-admin-login.png)
+*11. 管理后台登录验证网关 — 安全的凭证登录界面，内置配置与找回说明。*
 
 ![07. Web 管理控制台](screenshots/07-pure-php-admin-dashboard.png)
-*07. Web 管理控制台 — 实时队列状态监控、模式切换、参赛者排名与完整审计日志*
+*07. Web 管理控制台 — WAL 队列状态监控、模式切换、手动执行队列消费与参赛选手管理。*
+
+![12. 实时审计日志监控](screenshots/12-pure-php-audit-log.png)
+*12. 实时审计日志监控 — 毫秒级展示已处理及排队中的选票记录与设备识别指纹。*
 
 ---
 
-## 📦 项目目录结构
+## 📝 WordPress 简码（Shortcodes）使用文档
 
+插件提供两个高性能且兼容全页缓存的简码：
+
+### 1. `[voting_form]`
+生成前台参赛选手投票卡片网格。
+
+| 参数 | 类型 | 默认值 | 作用说明 |
+| :--- | :--- | :--- | :--- |
+| `category` | `string` | `""` | 按特定分类筛选选手（例如：`category="Simpson"`）。 |
+| `type` | `string` | `""` | 按类型筛选选手（例如：`type="Family"`）。 |
+| `limit` | `int` | `0` | 覆盖当前表单实例的投票上限（`0` 表示采用全局配置）。 |
+| `columns` | `int` | `3` | 桌面端卡片网格列数（支持 `2`、`3` 或 `4`）。 |
+| `show_results` | `int` | `0` | 设为 `1` 时在投票网格正下方直接内嵌开票结果。 |
+
+**使用示例：**
 ```text
-voting-system/
-├── screenshots/               # 两个版本的界面展示截图
-├── wordpress-plugin/          # WordPress 插件版 (v3.4.0)
-│   ├── assets/                # 后台与前台 CSS/JS 资源
-│   ├── screenshots/           # WP 匿名化界面截图
-│   ├── voting-system.php      # WordPress 插件主入口文件
-│   ├── README.md              # 英文文档
-│   ├── README.es.md           # 西班牙文文档
-│   ├── README.ja.md           # 日文文档
-│   └── README.zh.md           # 中文文档
-├── pure-php/                  # 独立 Pure PHP 版 (v2.0.0)
-│   ├── api/                   # 高并发投票、状态水合与统计接口
-│   ├── admin/                 # 独立的 Web 管理控制台
-│   ├── includes/              # SQLite WAL 数据库、队列、指纹识别及国际化引擎
-│   ├── tests/                 # 200 至 500 并发请求压力测试套件
-│   ├── worker.php             # CLI 队列消费守护进程与 Cron 执行器
-│   ├── index.php              # 公开投票页面（酒红竞赛质感主题）
-│   ├── README.md              # 英文文档
-│   ├── README.es.md           # 西班牙文文档
-│   ├── README.ja.md           # 日文文档
-│   └── README.zh.md           # 中文文档
-├── README.md                  # 英文项目全局总览
-├── README.es.md               # 西班牙文项目全局总览
-├── README.ja.md               # 日文项目全局总览
-└── README.zh.md               # 中文项目全局总览
+[voting_form category="Simpson" columns="4"]
+```
+
+### 2. `[voting_results]`
+展示验证后的实时计票结果与百分比。
+
+| 参数 | 类型 | 默认值 | 作用说明 |
+| :--- | :--- | :--- | :--- |
+| `category` | `string` | `""` | 按分类筛选开票结果。 |
+| `type` | `string` | `""` | 按类型筛选开票结果。 |
+| `show_percentages` | `int` | `1` | 显示或隐藏百分比进度条（`1` 或 `0`）。 |
+| `show_numbers` | `int` | `1` | 显示或隐藏得票数值计数（`1` 或 `0`）。 |
+| `show_breakdown` | `int` | `1` | 显示选手详细得分列表。 |
+
+**使用示例：**
+```text
+[voting_results show_percentages="1" show_numbers="1"]
 ```
 
 ---
 
-## ⚡ 版本对比：应该选择哪个版本？
+## 🔐 Pure PHP 管理后台访问与凭证配置/恢复
 
-| 特性 | WordPress 插件版 (`v3.4.0`) | Pure PHP 独立版 (`v2.0.0`) |
-| :--- | :--- | :--- |
-| **目标平台** | WordPress 6.0 及以上 | 任意 PHP 8.0+ 服务器（Nginx/Apache/Caddy） |
-| **外部依赖** | WordPress 核心与 WPDB | 零第三方框架与依赖 |
-| **数据库** | MySQL / MariaDB | 高性能 SQLite WAL 或 MySQL PDO |
-| **并发架构设计** | 动态 AJAX Nonce 与投票者状态水合 | 生产者-消费者 WAL 队列与后台 Worker |
-| **吞吐能力** | 静态 HTML 全页缓存 + 异步 AJAX | **持续摄入 755+ 请求/秒** |
-| **竞态条件免疫** | 严格数据库作用域配额验证 | **原子级 ACID 事务队列串行化处理** |
-| **极简模式** | 全局限投 1 票（自动隐藏分类选项） | 全局限投 1 票（严格强力执行） |
-| **截止后保留展示** | 支持（顶部提示横幅 + 按钮禁用） | 支持（顶部提示横幅 + 按钮禁用） |
-| **支持的语言** | 英语（主语言）、西班牙语、加泰罗尼亚语 | 英语（主语言）、西班牙语、加泰罗尼亚语 |
-| **视觉设计** | 经典酒红竞赛主题风格（`#6E1F2D`） | 经典酒红竞赛主题风格（`#6E1F2D`） |
+Pure PHP 版本在 `/admin/` 提供了独立的后台管理控制台。
 
----
+### 默认管理员凭证
+- **后台地址**：`http://your-domain/pure-php/admin/`
+- **默认用户名**：`admin`
+- **默认密码**：`admin123`
 
-## 🚀 快速入门
-
-### 方案 A：WordPress 插件 (`wordpress-plugin/`)
-1. 将 `wordpress-plugin/` 目录复制到 WordPress 的 `wp-content/plugins/voting-system/` 路径下。
-2. 在 WordPress 后台 **插件 > 已安装插件** 中启用该插件。
-3. 在 **投票系统 > 设置** 中配置相关选项（极简模式、展示规则等）。
-4. 在任意页面或文章中使用简码 `[voting_form]` 嵌入投票表单。
-
-### 方案 B：Pure PHP 独立版 (`pure-php/`)
-1. 将 `pure-php/` 部署至任意 Web 服务器目录。
-2. 启动 PHP 内置开发服务器：
-   ```bash
-   php -S localhost:8080 -t pure-php/
-   ```
-3. 运行并发压力测试套件：
-   ```bash
-   php pure-php/tests/stress_test.php 200
-   ```
-4. 访问前台投票界面 `http://localhost:8080/` 以及后台管理控制台 `http://localhost:8080/admin/`。
+### 凭证配置与找回恢复
+所有凭证由 `pure-php/config.php` 集中管理：
+```php
+define('ADMIN_USER', 'admin');
+define('ADMIN_PASS', 'admin123'); // 生产环境请修改为强密码
+```
+- **修改凭证**：直接在 `pure-php/config.php` 中修改 `ADMIN_USER` 和 `ADMIN_PASS` 常量。
+- **找回密码/恢复访问**：若忘记密码，无需操作数据库，只需通过 FTP、SSH 或文件管理器编辑 `pure-php/config.php` 并重设 `ADMIN_PASS` 即可即时生效。
 
 ---
 
-## 🏷️ 标签与关键词
+## 🌍 国际化多语言支持 (i18n)
 
-`php`, `wordpress`, `wordpress-plugin`, `voting-system`, `high-concurrency`, `sqlite-wal`, `producer-consumer`, `queue-worker`, `race-condition-safe`, `cache-friendly`, `wp-super-cache`, `wp-rocket`, `litespeed`, `i18n`, `multilingual`.
+系统全面原生支持 **7 种语言**：
+- **英语 (`en`)**
+- **西班牙语 (`es`)**
+- **加泰罗尼亚语 (`ca`)**
+- **葡萄牙语 (`pt`)**
+- **法语 (`fr`)**
+- **日语 (`ja`)**
+- **中文 (`zh`)**
+
+### 模块化语言包机制
+- **Pure PHP**：语言字典以独立 PHP 文件存放在 `pure-php/languages/`（`en.php`、`zh.php` 等），新增语言只需复制 `en.php` 并翻译键值数组即可，无需数据库配置。
+- **WordPress 插件**：在 `includes/dictionary.php` 与 `includes/i18n.php` 集中处理，自动适配站点语言、管理员语言偏好以及 WPML/Polylang 等多语言插件。
 
 ---
 
-## 📄 许可证
+## 📄 开源协议
 
-- WordPress 插件版：采用 **GNU General Public License v2 (GPLv2)** 协议开源。
-- Pure PHP 高并发版：采用 **MIT License** 协议开源。
+- WordPress 插件版：采用 **GNU General Public License v2 (GPLv2)** 开源许可。
+- Pure PHP 纯代码高并发版：采用 **MIT License** 开源许可。

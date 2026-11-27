@@ -1,85 +1,67 @@
 # WordPress Voting System (Modern Competition Edition)
 
-High-performance voting plugin for WordPress featuring **Simple Mode** (1 vote per device/voter), **Advanced Category Limits**, **Closed Voting with Visible Participants**, and **100% Cache-Compatible Dynamic AJAX Hydration** (WP Super Cache, WP Rocket, LiteSpeed Cache). Built with privacy protection, anti-fraud device fingerprinting, and internationalization (English, Spanish, Catalan).
+[![Latest Release](https://img.shields.io/github/v/release/christiancabrero/voting-system?color=blue&label=Latest Release )](https://github.com/christiancabrero/voting-system/releases/latest)
+[![PHP](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
+[![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
+[![License](https://img.shields.io/badge/License-GPLv2-green.svg)](#license)
 
 ---
 
-## 🌟 Key Features
-
-### 1. Simple Mode vs. Advanced Mode Switch
-- **Simple Mode (1 vote per voter global)**:
-  - Treats all contestants as a unified pool regardless of categories or types.
-  - Strictly limits each voter/device to exactly **1 vote**.
-  - Interactive backend switcher in `Settings > Voting System` toggles between Simple and Advanced modes.
-  - When Simple Mode is activated, category/type limit fields and multi-vote options are automatically hidden in the backend to ensure a clean, distraction-free administration experience.
-- **Advanced Mode**:
-  - Set independent voting limits per category, per type, or global limits.
-  - Optionally allows multiple votes per contestant.
-
-### 2. Closed Voting with Visible Participants
-- New option: **"Show participants when voting is closed"** (`vs_closed_show_participants`).
-- When voting closes (manually or via scheduled start/end dates):
-  - An informative status alert banner appears at the top.
-  - All contestants remain 100% visible with their pictures, titles, categories, and types.
-  - All voting buttons are locked (`disabled`) with `.vs-btn-closed` styling and localized text: **"Voting closed"** (EN) / **"Votaciones cerradas"** (ES) / **"Votacions tancades"** (CA).
-
-### 3. High-Performance Static Caching & Dynamic AJAX Hydration
-- **Problem Solved**: Full-page caching plugins often serve stale HTML with outdated vote counters (e.g., displaying *"0 of 1 votes cast"* to someone who already voted) or expired security nonces.
-- **The Solution**:
-  - The contestant grid, photos, and markup are **100% statically cached** in memory or on disk by WP Super Cache, WP Rocket, LiteSpeed Cache, or CDNs (Cloudflare), dramatically slashing server load under massive traffic.
-  - Upon page load, an ultra-lightweight asynchronous endpoint (`vs_get_voter_state`) queries the voter's device state.
-  - Dynamically updates the security nonce so it never expires on cached pages.
-  - Hydrates real-time remaining votes, locks exhausted buttons, and adds **"✓ Voted"** badges to options the user voted for.
-  - Includes a comprehensive **Cache Compatibility Guide** directly inside the WordPress admin settings.
-
-### 4. Multilingual Engine with Automatic Detection
-- **Primary Language**: English (`en`).
-- **Supported Languages**: English (`en`), Spanish (`es`), and Catalan (`ca`).
-- **Detection Hierarchy**:
-  1. URL parameter (`?lang=en|es|ca`) or cookie (`vs_lang`).
-  2. Polylang / WPML active language.
-  3. WordPress site locale (`determine_locale()` / `get_locale()`).
-  4. Browser `Accept-Language` header.
-  5. Default fallback: English (`en`).
-
-### 5. Competition Visual Design & Privacy
-- Inspired by classical competition voting interfaces:
-  - Signature burgundy branding (`#6E1F2D`) with gold hover accents (`#a67c4c`).
-  - Circular avatar images (`aspect-ratio: 1/1; border-radius: 50%`).
-  - Built-in visual privacy blur for demo and audit environments.
-  - Mobile-first, fully responsive grid.
+## 📥 [Download Latest Release](https://github.com/christiancabrero/voting-system/releases/latest)
 
 ---
 
-## 📸 Screenshots
+## 📸 Visual Showcase
 
-![Frontend in Simple Mode (Open)](screenshots/01-frontend-open-simple-mode.png)
-*01. Frontend in Simple Mode (Open)*
+![01. Frontend Open](screenshots/01-frontend-open-simple-mode.png)
+*01. Frontend in Simple Mode (Open) — Crisp unblurred contestant photos, category tag properly stacked above vote button.*
 
-![Post-Vote State (Votes Exhausted)](screenshots/02-vote-cast-exhausted-state.png)
-*02. Post-Vote State (Votes Exhausted)*
+![02. Post-Vote Exhausted State](screenshots/02-vote-cast-exhausted-state.png)
+*02. Post-Vote State (Votes Exhausted) — Instant dynamic confirmation; candidate shows '✓ Voted' and remaining buttons lock.*
 
-![Closed Voting with Participants Visible](screenshots/03-voting-closed-participants-visible.png)
-*03. Closed Voting with Participants Visible*
+![03. Closed Voting with Participants](screenshots/03-voting-closed-participants-visible.png)
+*03. Closed Voting with Participants Visible — Status banner shown while contestants remain visible and unblurred.*
 
-![Backend Simple / Advanced Mode Switch](screenshots/04-backend-simple-mode-switcher.png)
-*04. Backend Simple / Advanced Mode Switch*
+![04. Backend Simple / Advanced Mode Switch](screenshots/04-backend-simple-mode-switcher.png)
+*04. Backend Simple / Advanced Mode Switch — Interactive switcher between Simple (1 vote) and Advanced category rules.*
 
-![Cache Compatibility Guide in Backend](screenshots/05-backend-cache-compatibility-guide.png)
-*05. Cache Compatibility Guide in Backend*
+![05. Cache Compatibility Guide](screenshots/05-backend-cache-compatibility-guide.png)
+*05. Cache Compatibility Guide in Backend — Built-in reference explaining AJAX hydration with caching plugins.*
+
+![08. Results & Breakdown](screenshots/08-wp-admin-results-breakdown.png)
+*08. Live Results & Breakdown — Real-time vote tallies, percentage bars, and contestant status in WordPress.*
+
+![09. Audit & Votes Trail](screenshots/09-wp-admin-audit-votes.png)
+*09. Audit & Votes Trail — Individual vote audit log with device ID, IP, token, and timestamp.*
+
+![10. Security Settings](screenshots/10-wp-admin-security-settings.png)
+*10. Security & Anti-Fraud Settings — IP whitelist/blacklist, request rate limiting, and voter limits.*
 
 ---
 
-## 🚀 Installation & Usage
+## 📝 Shortcodes Documentation
 
-1. Copy the `voting-system` folder into `wp-content/plugins/`.
-2. Activate the plugin from the WordPress admin menu (`Plugins > Installed Plugins`).
-3. Navigate to **Voting System > Settings**:
-   - Choose **Simple Mode** (1 vote total) or **Advanced Mode**.
-   - Enable **"Show participants when voting is closed"** if desired.
-   - Configure automatic schedule or control voting manually.
-4. Add contestants under **Voting System > Add Contestant**.
-5. Embed the voting form on any page or post using the shortcode:
-   ```text
-   [voting_form]
-   ```
+### 1. `[voting_form]`
+- `category=""`: Filter contestants by category.
+- `type=""`: Filter contestants by type.
+- `limit="0"`: Custom vote quota for this form.
+- `columns="3"`: Grid desktop columns (`2`, `3`, `4`).
+- `show_results="0"`: Display results below voting cards.
+
+### 2. `[voting_results]`
+- `category=""`: Filter results by category.
+- `type=""`: Filter results by type.
+- `show_percentages="1"`: Show percentage bars.
+- `show_numbers="1"`: Show total vote counts.
+- `show_breakdown="1"`: Detailed contestants breakdown.
+
+---
+
+## 🌍 Internationalization (i18n)
+Supported in 7 languages: English (en), Spanish (es), Catalan (ca), Portuguese (pt), French (fr), Japanese (ja), Chinese (zh).
+Easily extensible via clean array files in `languages/{lang}.php`.
+
+---
+
+## 📄 License
+- GNU General Public License v2 (GPLv2)

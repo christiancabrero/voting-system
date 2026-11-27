@@ -32,6 +32,10 @@ define('RATE_LIMIT_MAX_PER_MINUTE', 60); // Max voting attempts per IP per minut
 define('COOKIE_EXPIRE_DAYS', 365);
 define('CSRF_SECRET', 'vs_pure_php_secret_key_change_me_in_production_2026');
 
+// Web Administration Console Access (/admin/)
+define('ADMIN_USER', 'admin');
+define('ADMIN_PASS', 'admin123'); // Default password - change in production or recover access here
+
 // Session configuration
 if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
     session_start();

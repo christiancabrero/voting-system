@@ -78,6 +78,10 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     border: 2px solid transparent;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .vs-item:hover {
@@ -93,7 +97,12 @@
     margin: 0 auto 15px;
     display: block;
     border: 4px solid #f0f0f0;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, filter 0.3s ease;
+}
+
+/* Blur only when closed with blur option active or explicitly blurred */
+.vs-closed-blurred .vs-item img,
+.vs-item.vs-blurred img {
     filter: blur(14px);
     -webkit-filter: blur(14px);
 }
@@ -108,6 +117,7 @@
     font-weight: 700;
     color: #222;
     line-height: 1.3;
+    width: 100%;
 }
 
 .vs-item .vs-type {
@@ -115,19 +125,21 @@
     font-size: 14px;
     margin: 5px 0;
     font-weight: 500;
+    width: 100%;
 }
 
 .vs-item .vs-category {
-    display: inline-block;
+    display: block;
     background: #e9ecef;
     padding: 4px 14px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
     color: #495057;
-    margin: 8px 0 12px;
+    margin: 8px auto 16px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    width: fit-content;
 }
 
 /* ============================================
@@ -143,11 +155,13 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.25s ease;
-    margin-top: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
     display: inline-block;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     box-shadow: 0 4px 12px rgba(110, 31, 45, 0.25);
+    width: auto;
 }
 
 .vs-vote-btn:hover:not(:disabled) {

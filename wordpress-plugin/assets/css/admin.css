@@ -274,6 +274,6 @@
 }
 
 .vs-table img, #vs-photo-preview img {
-    filter: blur(14px);
-    -webkit-filter: blur(14px);
+    border-radius: 50%;
+    object-fit: cover;
 }

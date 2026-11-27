@@ -4,6 +4,7 @@
  */
 
 require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/../includes/Database.php';
 require_once __DIR__ . '/../includes/Storage.php';
 require_once __DIR__ . '/../includes/Queue.php';
@@ -26,6 +27,9 @@ switch ($action) {
 
         $showClosed = !empty($_POST['closed_show_participants']) ? '1' : '0';
         Storage::setSetting('closed_show_participants', $showClosed);
+
+        $blurClosed = !empty($_POST['closed_blur_participants']) ? '1' : '0';
+        Storage::setSetting('closed_blur_participants', $blurClosed);
         break;
 
     case 'drain_queue':

@@ -1,0 +1,1184 @@
+<?php
+// Precompiled dictionary
+return array (
+  'menu_voting' => 
+  array (
+    'en' => 'Voting System',
+    'es' => 'Votaciones',
+    'ca' => 'Votacions',
+    'pt' => 'Votações',
+    'fr' => 'Système de Vote',
+    'ja' => '投票システム',
+    'zh' => '投票系统',
+  ),
+  'menu_options' => 
+  array (
+    'en' => 'Contestants',
+    'es' => 'Participantes',
+    'ca' => 'Participants',
+    'pt' => 'Participantes',
+    'fr' => 'Candidats',
+    'ja' => '候補者一覧',
+    'zh' => '参赛者管理',
+  ),
+  'menu_add_option' => 
+  array (
+    'en' => 'Add Contestant',
+    'es' => 'Añadir Opción',
+    'ca' => 'Afegir Opció',
+    'pt' => 'Adicionar Opção',
+    'fr' => 'Ajouter un Candidat',
+    'ja' => '候補者を追加',
+    'zh' => '添加参赛者',
+  ),
+  'menu_settings' => 
+  array (
+    'en' => 'Settings',
+    'es' => 'Configuración',
+    'ca' => 'Configuració',
+    'pt' => 'Configurações',
+    'fr' => 'Réglages',
+    'ja' => '設定',
+    'zh' => '设置',
+  ),
+  'menu_security' => 
+  array (
+    'en' => 'Security',
+    'es' => 'Seguridad',
+    'ca' => 'Seguretat',
+    'pt' => 'Segurança',
+    'fr' => 'Sécurité',
+    'ja' => 'セキュリティ',
+    'zh' => '安全设置',
+  ),
+  'menu_audit' => 
+  array (
+    'en' => 'Audit & Logs',
+    'es' => 'Auditoría',
+    'ca' => 'Auditoria',
+    'pt' => 'Auditoria',
+    'fr' => 'Audit et Journaux',
+    'ja' => '監査ログ',
+    'zh' => '投票审计',
+  ),
+  'menu_preview' => 
+  array (
+    'en' => 'Preview',
+    'es' => 'Vista Previa',
+    'ca' => 'Vista Prèvia',
+    'pt' => 'Pré-visualização',
+    'fr' => 'Aperçu',
+    'ja' => 'プレビュー',
+    'zh' => '效果预览',
+  ),
+  'menu_reset_tokens' => 
+  array (
+    'en' => 'Reset Tokens',
+    'es' => 'Resetear Tokens',
+    'ca' => 'Reiniciar Tokens',
+    'pt' => 'Redefinir Tokens',
+    'fr' => 'Réinitialiser les Jetons',
+    'ja' => 'トークンリセット',
+    'zh' => '重置令牌',
+  ),
+  'closed' => 
+  array (
+    'en' => 'Voting is closed',
+    'es' => 'Las votaciones están cerradas',
+    'ca' => 'Les votacions estan tancades',
+    'pt' => 'As votações estão encerradas',
+    'fr' => 'Les votes sont clos',
+    'ja' => '投票は締め切られました',
+    'zh' => '投票已截止',
+  ),
+  'starts' => 
+  array (
+    'en' => 'Voting will start on %s',
+    'es' => 'Las votaciones comenzarán el %s',
+    'ca' => 'Les votacions començaran el %s',
+    'pt' => 'As votações começarão em %s',
+    'fr' => 'Les votes débuteront le %s',
+    'ja' => '投票は %s に開始されます',
+    'zh' => '投票将于 %s 开始',
+  ),
+  'ended' => 
+  array (
+    'en' => 'Voting ended on %s',
+    'es' => 'Las votaciones finalizaron el %s',
+    'ca' => 'Les votacions van finalitzar el %s',
+    'pt' => 'As votações terminaram em %s',
+    'fr' => 'Les votes ont pris fin le %s',
+    'ja' => '投票は %s に終了しました',
+    'zh' => '投票已于 %s 结束',
+  ),
+  'unauthorized' => 
+  array (
+    'en' => 'Unauthorized access. Invalid voting token.',
+    'es' => 'Acceso no autorizado. Token de votación inválido.',
+    'ca' => 'Accés no autoritzat. El token de votació no és vàlid.',
+    'pt' => 'Acesso não autorizado. Token de votação inválido.',
+    'fr' => 'Accès non autorisé. Jeton de vote invalide.',
+    'ja' => '不正なアクセスです。無効な投票トークンです。',
+    'zh' => '未授权访问，无效的投票令牌。',
+  ),
+  'ip_denied' => 
+  array (
+    'en' => 'Your IP address is not authorized to vote.',
+    'es' => 'Tu dirección IP no está autorizada para votar.',
+    'ca' => 'La teva adreça IP no està autoritzada per votar.',
+    'pt' => 'O seu endereço IP não está autorizado a votar.',
+    'fr' => 'Votre adresse IP n\'est pas autorisée à voter.',
+    'ja' => 'お使いのIPアドレスは投票が許可されていません。',
+    'zh' => '您的 IP 地址未被授权投票。',
+  ),
+  'login_required' => 
+  array (
+    'en' => 'You must be logged in to vote.',
+    'es' => 'Debes iniciar sesión para votar.',
+    'ca' => 'Has d\'iniciar sessió per votar.',
+    'pt' => 'Deve iniciar sessão para votar.',
+    'fr' => 'Vous devez être connecté pour voter.',
+    'ja' => '投票するにはログインが必要です。',
+    'zh' => '您必须登录后才能投票。',
+  ),
+  'login' => 
+  array (
+    'en' => 'Log in',
+    'es' => 'Iniciar sesión',
+    'ca' => 'Inicia sessió',
+    'pt' => 'Iniciar sessão',
+    'fr' => 'Se connecter',
+    'ja' => 'ログイン',
+    'zh' => '登录',
+  ),
+  'voter_limit' => 
+  array (
+    'en' => 'The limit of %d voters has been reached',
+    'es' => 'Se ha alcanzado el límite de %d votantes',
+    'ca' => 'S’ha assolit el límit de %d votants',
+    'pt' => 'O limite de %d votantes foi atingido',
+    'fr' => 'La limite de %d votants a été atteinte',
+    'ja' => '有権者の上限（%d名）に達しました',
+    'zh' => '已达到 %d 位投票者的上限',
+  ),
+  'no_options' => 
+  array (
+    'en' => 'There are no options available to vote for',
+    'es' => 'No hay opciones disponibles para votar',
+    'ca' => 'No hi ha opcions disponibles per votar',
+    'pt' => 'Não existem opções disponíveis para votação',
+    'fr' => 'Aucune option disponible pour voter',
+    'ja' => '投票可能な候補がありません',
+    'zh' => '没有可供投票的选项',
+  ),
+  'already_voted' => 
+  array (
+    'en' => 'You have already voted. Results will be available soon.',
+    'es' => 'Ya has votado. Los resultados estarán disponibles pronto.',
+    'ca' => 'Ja has votat, aviat en coneixeràs els resultats.',
+    'pt' => 'Já votou. Os resultados estarão disponíveis em breve.',
+    'fr' => 'Vous avez déjà voté. Les résultats seront bientôt disponibles.',
+    'ja' => 'すでに投票済みです。結果は近日公開されます。',
+    'zh' => '您已经投过票了，结果将很快公布。',
+  ),
+  'voter_number' => 
+  array (
+    'en' => 'Voter',
+    'es' => 'Votante',
+    'ca' => 'Votant',
+    'pt' => 'Votante',
+    'fr' => 'Votant',
+    'ja' => '投票者',
+    'zh' => '投票者',
+  ),
+  'of' => 
+  array (
+    'en' => 'of',
+    'es' => 'de',
+    'ca' => 'de',
+    'pt' => 'de',
+    'fr' => 'sur',
+    'ja' => '/',
+    'zh' => '/',
+  ),
+  'votes_available' => 
+  array (
+    'en' => 'You have cast %1$s of %2$s available votes',
+    'es' => 'Has votado %1$s de %2$s votos disponibles',
+    'ca' => 'Has votat %1$s de %2$s vots disponibles',
+    'pt' => 'Votou em %1$s de %2$s votos disponíveis',
+    'fr' => 'Vous avez utilisé %1$s sur %2$s votes disponibles',
+    'ja' => '%2$s 票中 %1$s 票を投票済み',
+    'zh' => '在 %2$s 张可用票中您已投出 %1$s 张',
+  ),
+  'votes_left' => 
+  array (
+    'en' => '%s votes remaining',
+    'es' => 'Te quedan %s votos',
+    'ca' => 'Et queden %s vots',
+    'pt' => 'Restam-lhe %s votos',
+    'fr' => 'Il vous reste %s votes',
+    'ja' => '残り %s 票',
+    'zh' => '剩余 %s 票',
+  ),
+  'votes_used' => 
+  array (
+    'en' => 'You have used all your votes%s.',
+    'es' => 'Has agotado todos tus votos%s.',
+    'ca' => 'Has esgotat tots els teus vots%s.',
+    'pt' => 'Esgotou todos os seus votos%s.',
+    'fr' => 'Vous avez utilisé tous vos votes%s.',
+    'ja' => 'すべての投票枠を使用しました%s。',
+    'zh' => '您已用尽所有投票额度%s。',
+  ),
+  'vote' => 
+  array (
+    'en' => 'Vote',
+    'es' => 'Votar',
+    'ca' => 'Vota',
+    'pt' => 'Votar',
+    'fr' => 'Voter',
+    'ja' => '投票',
+    'zh' => '投票',
+  ),
+  'voted' => 
+  array (
+    'en' => 'Voted',
+    'es' => 'Votado',
+    'ca' => 'Ja has votat',
+    'pt' => 'Votado',
+    'fr' => 'Voté',
+    'ja' => '投票済み',
+    'zh' => '已投票',
+  ),
+  'vote_badge' => 
+  array (
+    'en' => '%d votes',
+    'es' => '%d votos',
+    'ca' => '%d vots',
+    'pt' => '%d votos',
+    'fr' => '%d votes',
+    'ja' => '%d 票',
+    'zh' => '%d 票',
+  ),
+  'vote_badge_one' => 
+  array (
+    'en' => '1 vote',
+    'es' => '1 voto',
+    'ca' => '1 vot',
+    'pt' => '1 voto',
+    'fr' => '1 vote',
+    'ja' => '1 票',
+    'zh' => '1 票',
+  ),
+  'no_votes_yet' => 
+  array (
+    'en' => 'No votes have been recorded yet.',
+    'es' => 'No hay votos registrados todavía.',
+    'ca' => 'Encara no hi ha vots registrats.',
+    'pt' => 'Ainda não existem votos registados.',
+    'fr' => 'Aucun vote enregistré pour le moment.',
+    'ja' => 'まだ投票記録がありません。',
+    'zh' => '暂无投票记录。',
+  ),
+  'results' => 
+  array (
+    'en' => 'Results',
+    'es' => 'Resultados',
+    'ca' => 'Resultats',
+    'pt' => 'Resultados',
+    'fr' => 'Résultats',
+    'ja' => '投票結果',
+    'zh' => '投票结果',
+  ),
+  'total_votes' => 
+  array (
+    'en' => 'Total votes: %d',
+    'es' => 'Total de votos: %d',
+    'ca' => 'Total de vots: %d',
+    'pt' => 'Total de votos: %d',
+    'fr' => 'Total des votes : %d',
+    'ja' => '総投票数: %d',
+    'zh' => '总票数：%d',
+  ),
+  'unique_voters' => 
+  array (
+    'en' => 'Unique voters: %d',
+    'es' => 'Votantes únicos: %d',
+    'ca' => 'Votants únics: %d',
+    'pt' => 'Votantes únicos: %d',
+    'fr' => 'Votants uniques : %d',
+    'ja' => '個別有権者数: %d',
+    'zh' => '独立投票者数：%d',
+  ),
+  'votes' => 
+  array (
+    'en' => '%d votes',
+    'es' => '%d votos',
+    'ca' => '%d vots',
+    'pt' => '%d votos',
+    'fr' => '%d votes',
+    'ja' => '%d 票',
+    'zh' => '%d 票',
+  ),
+  'type' => 
+  array (
+    'en' => 'Type: %s',
+    'es' => 'Tipo: %s',
+    'ca' => 'Tipus: %s',
+    'pt' => 'Tipo: %s',
+    'fr' => 'Type : %s',
+    'ja' => '種別: %s',
+    'zh' => '类型：%s',
+  ),
+  'category' => 
+  array (
+    'en' => 'Category: %s',
+    'es' => 'Categoría: %s',
+    'ca' => 'Categoria: %s',
+    'pt' => 'Categoria: %s',
+    'fr' => 'Catégorie : %s',
+    'ja' => 'カテゴリ: %s',
+    'zh' => '分类：%s',
+  ),
+  'voting_closed_btn' => 
+  array (
+    'en' => 'Voting closed',
+    'es' => 'Votaciones cerradas',
+    'ca' => 'Votacions tancades',
+    'pt' => 'Votação encerrada',
+    'fr' => 'Vote clos',
+    'ja' => '投票終了',
+    'zh' => '投票截止',
+  ),
+  'voting_closed_notice' => 
+  array (
+    'en' => 'Voting is currently closed. You can view the participants below.',
+    'es' => 'Las votaciones están actualmente cerradas. A continuación puedes ver los participantes.',
+    'ca' => 'Les votacions estan actualment tancades. A continuació podeu veure els participants.',
+    'pt' => 'A votação está encerrada. Pode consultar os participantes abaixo.',
+    'fr' => 'Les votes sont actuellement clos. Vous pouvez consulter les candidats ci-dessous.',
+    'ja' => '現在投票は締め切られています。以下で参加者を確認できます。',
+    'zh' => '投票目前已关闭，您可以在下方查看参赛者列表。',
+  ),
+  'simple_mode_notice' => 
+  array (
+    'en' => 'Simple mode active: 1 vote per voter.',
+    'es' => 'Modo simple activo: 1 voto por votante.',
+    'ca' => 'Mode simple actiu: 1 vot per votant.',
+    'pt' => 'Modo simples ativo: 1 voto por votante.',
+    'fr' => 'Mode simple actif : 1 vote par votant.',
+    'ja' => 'シンプルモード適用中: 1人1票限定。',
+    'zh' => '极简模式生效中：每人限投 1 票。',
+  ),
+  'sending_vote' => 
+  array (
+    'en' => 'Sending vote...',
+    'es' => 'Enviando voto...',
+    'ca' => 'Enviant vot...',
+    'pt' => 'A enviar voto...',
+    'fr' => 'Envoi du vote...',
+    'ja' => '投票を送信中...',
+    'zh' => '正在提交投票...',
+  ),
+  'vote_success' => 
+  array (
+    'en' => 'Vote registered successfully!',
+    'es' => '¡Voto registrado correctamente!',
+    'ca' => 'Vot registrat correctament!',
+    'pt' => 'Voto registado com sucesso!',
+    'fr' => 'Vote enregistré avec succès !',
+    'ja' => '投票が正常に完了しました！',
+    'zh' => '投票成功记录！',
+  ),
+  'vote_error' => 
+  array (
+    'en' => 'Error processing vote',
+    'es' => 'Error al procesar el voto',
+    'ca' => 'Error en processar el vot',
+    'pt' => 'Erro ao processar voto',
+    'fr' => 'Erreur lors du vote',
+    'ja' => '投票の処理中にエラーが発生しました',
+    'zh' => '处理投票时发生错误',
+  ),
+  'admin_title' => 
+  array (
+    'en' => 'Voting Management',
+    'es' => 'Gestión de Votaciones',
+    'ca' => 'Gestió de Votacions',
+    'pt' => 'Gestão de Votações',
+    'fr' => 'Gestion des Votes',
+    'ja' => '投票管理ダッシュボード',
+    'zh' => '投票管理',
+  ),
+  'admin_stats' => 
+  array (
+    'en' => 'Statistics',
+    'es' => 'Estadísticas',
+    'ca' => 'Estadístiques',
+    'pt' => 'Estatísticas',
+    'fr' => 'Statistiques',
+    'ja' => '統計情報',
+    'zh' => '统计数据',
+  ),
+  'admin_available_options' => 
+  array (
+    'en' => 'Available Contestants (%d)',
+    'es' => 'Opciones disponibles (%d)',
+    'ca' => 'Opcions disponibles (%d)',
+    'pt' => 'Opções disponíveis (%d)',
+    'fr' => 'Candidats disponibles (%d)',
+    'ja' => '登録済み候補者 (%d)',
+    'zh' => '可用参赛者 (%d)',
+  ),
+  'add_new_option' => 
+  array (
+    'en' => 'Add New Contestant',
+    'es' => 'Añadir nueva opción',
+    'ca' => 'Afegir nova opció',
+    'pt' => 'Adicionar nova opção',
+    'fr' => 'Ajouter un nouveau candidat',
+    'ja' => '新規候補者の追加',
+    'zh' => '添加新参赛者',
+  ),
+  'th_id' => 
+  array (
+    'en' => 'ID',
+    'es' => 'ID',
+    'ca' => 'ID',
+    'pt' => 'ID',
+    'fr' => 'ID',
+    'ja' => 'ID',
+    'zh' => '序号',
+  ),
+  'th_photo' => 
+  array (
+    'en' => 'Photo',
+    'es' => 'Foto',
+    'ca' => 'Foto',
+    'pt' => 'Foto',
+    'fr' => 'Photo',
+    'ja' => '写真',
+    'zh' => '照片',
+  ),
+  'th_title' => 
+  array (
+    'en' => 'Title',
+    'es' => 'Título',
+    'ca' => 'Títol',
+    'pt' => 'Título',
+    'fr' => 'Titre',
+    'ja' => '名前・タイトル',
+    'zh' => '名称',
+  ),
+  'th_type' => 
+  array (
+    'en' => 'Type',
+    'es' => 'Tipo',
+    'ca' => 'Tipus',
+    'pt' => 'Tipo',
+    'fr' => 'Type',
+    'ja' => '種別',
+    'zh' => '类型',
+  ),
+  'th_category' => 
+  array (
+    'en' => 'Category',
+    'es' => 'Categoría',
+    'ca' => 'Categoria',
+    'pt' => 'Categoria',
+    'fr' => 'Catégorie',
+    'ja' => 'カテゴリ',
+    'zh' => '分类',
+  ),
+  'th_actions' => 
+  array (
+    'en' => 'Actions',
+    'es' => 'Acciones',
+    'ca' => 'Accions',
+    'pt' => 'Ações',
+    'fr' => 'Actions',
+    'ja' => '操作',
+    'zh' => '操作',
+  ),
+  'th_votes' => 
+  array (
+    'en' => 'Votes',
+    'es' => 'Votos',
+    'ca' => 'Vots',
+    'pt' => 'Votos',
+    'fr' => 'Votes',
+    'ja' => '得票数',
+    'zh' => '得票数',
+  ),
+  'th_percentage' => 
+  array (
+    'en' => 'Percentage',
+    'es' => 'Porcentaje',
+    'ca' => 'Percentatge',
+    'pt' => 'Percentagem',
+    'fr' => 'Pourcentage',
+    'ja' => '得票率',
+    'zh' => '得票率',
+  ),
+  'th_participant' => 
+  array (
+    'en' => 'Contestant',
+    'es' => 'Participante',
+    'ca' => 'Participant',
+    'pt' => 'Participante',
+    'fr' => 'Candidat',
+    'ja' => '候補者',
+    'zh' => '参赛者',
+  ),
+  'btn_edit' => 
+  array (
+    'en' => 'Edit',
+    'es' => 'Editar',
+    'ca' => 'Editar',
+    'pt' => 'Editar',
+    'fr' => 'Modifier',
+    'ja' => '編集',
+    'zh' => '编辑',
+  ),
+  'btn_delete' => 
+  array (
+    'en' => 'Delete',
+    'es' => 'Eliminar',
+    'ca' => 'Eliminar',
+    'pt' => 'Eliminar',
+    'fr' => 'Supprimer',
+    'ja' => '削除',
+    'zh' => '删除',
+  ),
+  'btn_save' => 
+  array (
+    'en' => 'Save Changes',
+    'es' => 'Guardar Cambios',
+    'ca' => 'Desar Canvis',
+    'pt' => 'Guardar Alterações',
+    'fr' => 'Enregistrer les modifications',
+    'ja' => '変更を保存',
+    'zh' => '保存更改',
+  ),
+  'delete_all_votes' => 
+  array (
+    'en' => 'Delete All Votes',
+    'es' => 'Eliminar Todos los Votos',
+    'ca' => 'Eliminar Tots els Vots',
+    'pt' => 'Eliminar Todos os Votos',
+    'fr' => 'Supprimer Tous les Votes',
+    'ja' => 'すべての投票を消去',
+    'zh' => '清空所有选票',
+  ),
+  'confirm_delete_all' => 
+  array (
+    'en' => 'Are you sure you want to delete all votes? This cannot be undone.',
+    'es' => '¿Estás seguro de eliminar todos los votos? Esta acción no se puede deshacer.',
+    'ca' => 'Segur que voleu eliminar tots els vots? Aquesta acció no es pot desfer.',
+    'pt' => 'Tem certeza que deseja excluir todos os votos? Esta ação não pode ser desfeita.',
+    'fr' => 'Êtes-vous sûr de vouloir supprimer tous les votes ? Cette action est irréversible.',
+    'ja' => '本当にすべての投票を削除しますか？この操作は元に戻せません。',
+    'zh' => '确定要清空所有投票数据吗？此操作无法撤销。',
+  ),
+  'settings_title' => 
+  array (
+    'en' => 'Voting System Settings',
+    'es' => 'Configuración del Sistema de Votaciones',
+    'ca' => 'Configuració del Sistema de Votacions',
+    'pt' => 'Configurações do Sistema de Votação',
+    'fr' => 'Réglages du Système de Vote',
+    'ja' => '投票システム設定',
+    'zh' => '投票系统设置',
+  ),
+  'mode_section' => 
+  array (
+    'en' => 'Operation Mode & Limits',
+    'es' => 'Modo de Votación y Límites',
+    'ca' => 'Mode de Votació i Límits',
+    'pt' => 'Modo de Votação e Limites',
+    'fr' => 'Mode de Vote et Limites',
+    'ja' => '動作モードと制限設定',
+    'zh' => '运行模式与限制',
+  ),
+  'simple_mode_title' => 
+  array (
+    'en' => 'Simple Mode',
+    'es' => 'Modo Simple',
+    'ca' => 'Mode Simple',
+    'pt' => 'Modo Simples',
+    'fr' => 'Mode Simple',
+    'ja' => 'シンプルモード',
+    'zh' => '极简模式',
+  ),
+  'simple_mode_desc' => 
+  array (
+    'en' => '1 vote total per voter across all contestants. Hides category & type complexity.',
+    'es' => '1 voto total por votante para todo el concurso. Oculta la complejidad de categorías.',
+    'ca' => '1 vot total per votant per a tot el concurs. Oculta la complexitat de categories.',
+    'pt' => '1 voto total por votante para todo o concurso. Oculta a complexidade de categorias.',
+    'fr' => '1 vote au total par votant pour l\'ensemble du concours. Masque la complexité des catégories.',
+    'ja' => '全候補者を通じて1人1票限定。カテゴリ等の複雑な設定を自動非表示にします。',
+    'zh' => '全局每人限投 1 票，自动隐藏复杂的分类与多票设置。',
+  ),
+  'advanced_mode_title' => 
+  array (
+    'en' => 'Advanced Mode',
+    'es' => 'Modo Avanzado',
+    'ca' => 'Mode Avançat',
+    'pt' => 'Modo Avançado',
+    'fr' => 'Mode Avancé',
+    'ja' => 'アドバンスモード',
+    'zh' => '高级模式',
+  ),
+  'advanced_mode_desc' => 
+  array (
+    'en' => 'Set independent limits per category, per type, or allow multiple votes.',
+    'es' => 'Establece límites independientes por categoría, por tipo o votos múltiples.',
+    'ca' => 'Estableix límits independents per categoria, per tipus o vots múltiples.',
+    'pt' => 'Defina limites independentes por categoria, por tipo ou votos múltiplos.',
+    'fr' => 'Définissez des limites indépendantes par catégorie, par type ou votes multiples.',
+    'ja' => 'カテゴリ別、種別別の投票上限や複数投票を詳細に設定できます。',
+    'zh' => '支持按分类、按类型设定配额，或允许对同一选项多次投票。',
+  ),
+  'control_section' => 
+  array (
+    'en' => 'Voting Control & Status',
+    'es' => 'Control de Votaciones',
+    'ca' => 'Control de Votacions',
+    'pt' => 'Controlo de Votação',
+    'fr' => 'Contrôle des Votes',
+    'ja' => '投票状態の制御',
+    'zh' => '投票状态控制',
+  ),
+  'current_status' => 
+  array (
+    'en' => 'Current Status',
+    'es' => 'Estado actual',
+    'ca' => 'Estat actual',
+    'pt' => 'Estado atual',
+    'fr' => 'État actuel',
+    'ja' => '現在の状態',
+    'zh' => '当前状态',
+  ),
+  'status_open' => 
+  array (
+    'en' => 'Open (Voting active)',
+    'es' => 'Abiertas (Se puede votar)',
+    'ca' => 'Obertes (Es pot votar)',
+    'pt' => 'Abertas (Pode votar)',
+    'fr' => 'Ouvert (Votes actifs)',
+    'ja' => '受付中（投票可能）',
+    'zh' => '开放中（接受投票）',
+  ),
+  'status_closed' => 
+  array (
+    'en' => 'Closed',
+    'es' => 'Cerradas',
+    'ca' => 'Tancades',
+    'pt' => 'Encerradas',
+    'fr' => 'Fermé',
+    'ja' => '終了',
+    'zh' => '已截止',
+  ),
+  'closed_show_participants' => 
+  array (
+    'en' => 'Show contestants when voting is closed',
+    'es' => 'Mostrar participantes cuando las votaciones estén cerradas',
+    'ca' => 'Mostrar participants quan les votacions estiguin tancades',
+    'pt' => 'Mostrar participantes quando a votação estiver encerrada',
+    'fr' => 'Afficher les candidats lorsque les votes sont clos',
+    'ja' => '投票終了後も候補者一覧を表示する',
+    'zh' => '投票关闭时依然展示参赛者列表',
+  ),
+  'closed_blur_participants' => 
+  array (
+    'en' => 'Blur contestant photos when voting is closed',
+    'es' => 'Difuminar fotos de participantes cuando las votaciones estén cerradas',
+    'ca' => 'Difuminar fotos de participants quan les votacions estiguin tancades',
+    'pt' => 'Desfocar fotos dos participantes quando a votação estiver encerrada',
+    'fr' => 'Flouter les photos des candidats lorsque les votes sont clos',
+    'ja' => '投票終了時に候補者の写真をぼかし表示する',
+    'zh' => '投票关闭时对参赛者照片应用磨砂模糊效果',
+  ),
+  'votes_per_device' => 
+  array (
+    'en' => 'Votes per voter/device',
+    'es' => 'Votos por dispositivo',
+    'ca' => 'Vots per dispositiu',
+    'pt' => 'Votos por dispositivo',
+    'fr' => 'Votes par appareil',
+    'ja' => '1デバイスあたりの投票数',
+    'zh' => '每台设备/选民投票额度',
+  ),
+  'votes_per_category' => 
+  array (
+    'en' => 'Votes per category',
+    'es' => 'Límite por categoría',
+    'ca' => 'Límit per categoria',
+    'pt' => 'Limite por categoria',
+    'fr' => 'Limite par catégorie',
+    'ja' => 'カテゴリごとの上限',
+    'zh' => '每分类投票上限',
+  ),
+  'votes_per_type' => 
+  array (
+    'en' => 'Votes per type',
+    'es' => 'Límite por tipo',
+    'ca' => 'Límit per tipus',
+    'pt' => 'Limite por tipo',
+    'fr' => 'Limite par type',
+    'ja' => '種別ごとの上限',
+    'zh' => '每类型投票上限',
+  ),
+  'voter_limit_field' => 
+  array (
+    'en' => 'Global voter limit',
+    'es' => 'Límite de votantes',
+    'ca' => 'Límit de votants',
+    'pt' => 'Limite de votantes',
+    'fr' => 'Limite globale de votants',
+    'ja' => '全体の投票者数上限',
+    'zh' => '总投票人数上限',
+  ),
+  'allow_multiple_per_option' => 
+  array (
+    'en' => 'Allow multiple votes for the same contestant',
+    'es' => 'Múltiples votos por opción',
+    'ca' => 'Múltiples vots per opció',
+    'pt' => 'Múltiplos votos por opção',
+    'fr' => 'Votes multiples pour le même candidat',
+    'ja' => '同一候補者への複数投票を許可',
+    'zh' => '允许对同一选项重复投票',
+  ),
+  'cache_guide_title' => 
+  array (
+    'en' => 'Performance & Full-Page Cache Compatibility',
+    'es' => '⚡ Rendimiento y Compatibilidad con Plugins de Caché',
+    'ca' => '⚡ Rendiment i Compatibilitat amb Plugins de Memòria Cau',
+    'pt' => '⚡ Desempenho e Compatibilidade com Plugins de Cache',
+    'fr' => '⚡ Performances et Compatibilité avec les Plugins de Cache',
+    'ja' => '⚡ パフォーマンスおよびキャッシュプラグイン対応ガイド',
+    'zh' => '⚡ 性能与全页缓存插件兼容指南',
+  ),
+  'security_title' => 
+  array (
+    'en' => 'Security Settings',
+    'es' => 'Configuración de Seguridad',
+    'ca' => 'Configuració de Seguretat',
+    'pt' => 'Configurações de Segurança',
+    'fr' => 'Paramètres de Sécurité',
+    'ja' => 'セキュリティ設定',
+    'zh' => '安全设置',
+  ),
+  'token_system_title' => 
+  array (
+    'en' => 'Voting Token System',
+    'es' => '🔐 Sistema de Tokens de Votación',
+    'ca' => '🔐 Sistema de Tokens de Votació',
+    'pt' => '🔐 Sistema de Tokens de Votação',
+    'fr' => '🔐 Système de Jetons de Vote',
+    'ja' => '🔐 投票トークン保護システム',
+    'zh' => '🔐 投票令牌保护机制',
+  ),
+  'enable_token_security' => 
+  array (
+    'en' => 'Enable secure voting tokens',
+    'es' => 'Activar tokens',
+    'ca' => 'Activar tokens',
+    'pt' => 'Ativar tokens',
+    'fr' => 'Activer les jetons',
+    'ja' => '安全トークン認証を有効化',
+    'zh' => '启用投票安全令牌',
+  ),
+  'token_single_use' => 
+  array (
+    'en' => 'Single-use tokens',
+    'es' => 'Token de uso único',
+    'ca' => 'Token d\'ús únic',
+    'pt' => 'Token de uso único',
+    'fr' => 'Jeton à usage unique',
+    'ja' => '使い捨てトークン',
+    'zh' => '单次使用令牌',
+  ),
+  'ip_restriction_title' => 
+  array (
+    'en' => 'IP Restriction',
+    'es' => '🌐 Restricción por IP',
+    'ca' => '🌐 Restricció per IP',
+    'pt' => '🌐 Restrição por IP',
+    'fr' => '🌐 Restriction par IP',
+    'ja' => '🌐 IPアドレス制限',
+    'zh' => '🌐 IP 地址限制',
+  ),
+  'enable_ip_restriction' => 
+  array (
+    'en' => 'Enable IP restrictions',
+    'es' => 'Activar restricción IP',
+    'ca' => 'Activar restricció IP',
+    'pt' => 'Ativar restrição por IP',
+    'fr' => 'Activer la restriction IP',
+    'ja' => 'IPアドレス制限を有効化',
+    'zh' => '启用 IP 限制',
+  ),
+  'allowed_ips' => 
+  array (
+    'en' => 'Allowed IP addresses (one per line)',
+    'es' => 'IPs permitidas',
+    'ca' => 'IPs permeses',
+    'pt' => 'IPs permitidos',
+    'fr' => 'Adresses IP autorisées',
+    'ja' => '許可するIPアドレス（1行に1つ）',
+    'zh' => '白名单 IP 地址（每行一个）',
+  ),
+  'audit_title' => 
+  array (
+    'en' => 'Voting Audit & Anti-Fraud Logs',
+    'es' => 'Auditoría de Votaciones',
+    'ca' => 'Auditoria de Votacions',
+    'pt' => 'Auditoria de Votações',
+    'fr' => 'Audit des Votes et Anti-Fraude',
+    'ja' => '投票監査および不正検出ログ',
+    'zh' => '投票审计与反作弊日志',
+  ),
+  'fraud_alerts_title' => 
+  array (
+    'en' => '🚨 Potential Fraud Detected',
+    'es' => '🚨 Posibles Fraudes Detectados',
+    'ca' => '🚨 Possibles Fraus Detectats',
+    'pt' => '🚨 Potenciais Fraudes Detetadas',
+    'fr' => '🚨 Fraudes Potentielles Détectées',
+    'ja' => '🚨 検出された不正投票アラート',
+    'zh' => '🚨 检测到的潜在刷票与作弊',
+  ),
+  'log_table_title' => 
+  array (
+    'en' => '📋 Full Vote Log',
+    'es' => '📋 Registro Completo de Votos',
+    'ca' => '📋 Registre Complet de Vots',
+    'pt' => '📋 Registo Completo de Votos',
+    'fr' => '📋 Journal Complet des Votes',
+    'ja' => '📋 全投票ログ履歴',
+    'zh' => '📋 完整投票记录清单',
+  ),
+  'th_device' => 
+  array (
+    'en' => 'Device Fingerprint',
+    'es' => 'Fingerprint del dispositivo',
+    'ca' => 'Fingerprint del dispositiu',
+    'pt' => 'Impressão digital do dispositivo',
+    'fr' => 'Empreinte de l\'appareil',
+    'ja' => '端末フィンガープリント',
+    'zh' => '设备指纹',
+  ),
+  'th_ip' => 
+  array (
+    'en' => 'IP Address',
+    'es' => 'IP',
+    'ca' => 'IP',
+    'pt' => 'IP',
+    'fr' => 'Adresse IP',
+    'ja' => 'IPアドレス',
+    'zh' => 'IP 地址',
+  ),
+  'th_date' => 
+  array (
+    'en' => 'Date & Time',
+    'es' => 'Fecha',
+    'ca' => 'Data',
+    'pt' => 'Data',
+    'fr' => 'Date et Heure',
+    'ja' => '日時',
+    'zh' => '投票时间',
+  ),
+  'th_reason' => 
+  array (
+    'en' => 'Reason / Status',
+    'es' => 'Razón',
+    'ca' => 'Raó',
+    'pt' => 'Motivo',
+    'fr' => 'Motif',
+    'ja' => '判定理由',
+    'zh' => '状态 / 判定原因',
+  ),
+  'shortcodes_title' => 
+  array (
+    'en' => 'Shortcodes Documentation',
+    'es' => 'Shortcodes disponibles',
+    'ca' => 'Shortcodes disponibles',
+    'pt' => 'Shortcodes disponíveis',
+    'fr' => 'Documentation des Shortcodes',
+    'ja' => '利用可能なショートコード一覧',
+    'zh' => '短代码说明文档',
+  ),
+  'shortcode_form_desc' => 
+  array (
+    'en' => 'Main voting grid form. Embed on any page or competition landing.',
+    'es' => 'Formulario principal de votación en cuadrícula. Insértalo en cualquier página.',
+    'ca' => 'Formulari principal de votació en quadrícula. Insereix-lo a qualsevol pàgina.',
+    'pt' => 'Formulário principal de votação. Insira-o em qualquer página.',
+    'fr' => 'Formulaire de vote principal en grille. À insérer sur n\'importe quelle page.',
+    'ja' => 'メイン投票グリッド。任意の固定ページや投稿に配置します。',
+    'zh' => '主要投票网格表单，可嵌入任意公开页面。',
+  ),
+  'shortcode_results_desc' => 
+  array (
+    'en' => 'Displays live or concluded results ranking with percentages and vote counters.',
+    'es' => 'Muestra los resultados y ranking en tiempo real o al finalizar.',
+    'ca' => 'Mostra els resultats i rànquing en temps real o en finalitzar.',
+    'pt' => 'Mostra os resultados e classificação em tempo real.',
+    'fr' => 'Affiche le classement et les résultats en direct ou terminés.',
+    'ja' => 'リアルタイムまたは終了後の投票結果ランキングを表示します。',
+    'zh' => '实时或截止后展示排名、得票数与百分比。',
+  ),
+  'voting_mode' => 
+  array (
+    'en' => 'Voting Mode',
+    'es' => 'Modo de votación',
+    'ca' => 'Mode de votació',
+    'pt' => 'Modo de votação',
+    'fr' => 'Mode de vote',
+    'ja' => '動作モード',
+    'zh' => '投票模式',
+  ),
+  'simple_rules' => 
+  array (
+    'en' => 'Simple Mode Rules',
+    'es' => 'Reglas del Modo Simple',
+    'ca' => 'Regles del Mode Simple',
+    'pt' => 'Regras do Modo Simples',
+    'fr' => 'Règles du Mode Simple',
+    'ja' => 'シンプルモードのルール',
+    'zh' => '极简模式规则',
+  ),
+  'auto_open' => 
+  array (
+    'en' => 'Automatic Open',
+    'es' => 'Apertura automática',
+    'ca' => 'Obertura automàtica',
+    'pt' => 'Abertura automática',
+    'fr' => 'Ouverture automatique',
+    'ja' => '自動開始スケジュール',
+    'zh' => '定时自动开启',
+  ),
+  'auto_close' => 
+  array (
+    'en' => 'Automatic Close',
+    'es' => 'Cierre automático',
+    'ca' => 'Tancament automàtic',
+    'pt' => 'Encerramento automático',
+    'fr' => 'Fermeture automatique',
+    'ja' => '自動終了スケジュール',
+    'zh' => '定时自动关闭',
+  ),
+  'voting_pages_title' => 
+  array (
+    'en' => 'Voting Pages',
+    'es' => '📍 Páginas de Votación',
+    'ca' => '📍 Pàgines de Votació',
+    'pt' => '📍 Páginas de Votação',
+    'fr' => '📍 Pages de Vote',
+    'ja' => '📍 投票ページ指定',
+    'zh' => '📍 投票目标页面',
+  ),
+  'voting_pages_desc' => 
+  array (
+    'en' => 'Pages with Shortcodes',
+    'es' => 'Páginas con shortcodes',
+    'ca' => 'Pàgines amb shortcodes',
+    'pt' => 'Páginas com shortcodes',
+    'fr' => 'Pages avec shortcodes',
+    'ja' => 'ショートコードを含むページ',
+    'zh' => '包含短代码的页面',
+  ),
+  'results_settings_title' => 
+  array (
+    'en' => 'Results Configuration',
+    'es' => 'Configuración de Resultados',
+    'ca' => 'Configuració de Resultats',
+    'pt' => 'Configuração de Resultados',
+    'fr' => 'Configuration des Résultats',
+    'ja' => '結果表示設定',
+    'zh' => '结果展示设置',
+  ),
+  'default_view' => 
+  array (
+    'en' => 'Default View',
+    'es' => 'Vista por defecto',
+    'ca' => 'Vista per defecte',
+    'pt' => 'Visualização padrão',
+    'fr' => 'Vue par défaut',
+    'ja' => 'デフォルトビュー',
+    'zh' => '默认视图',
+  ),
+  'show_images' => 
+  array (
+    'en' => 'Show Images',
+    'es' => 'Mostrar imágenes',
+    'ca' => 'Mostrar imatges',
+    'pt' => 'Mostrar imagens',
+    'fr' => 'Afficher les images',
+    'ja' => '写真を表示',
+    'zh' => '显示候选人照片',
+  ),
+  'show_percentages' => 
+  array (
+    'en' => 'Show Percentages',
+    'es' => 'Mostrar porcentajes',
+    'ca' => 'Mostrar percentatges',
+    'pt' => 'Mostrar percentagens',
+    'fr' => 'Afficher les pourcentages',
+    'ja' => 'パーセンテージを表示',
+    'zh' => '显示百分比',
+  ),
+  'show_numbers' => 
+  array (
+    'en' => 'Show Numbers / Counters',
+    'es' => 'Mostrar números',
+    'ca' => 'Mostrar números',
+    'pt' => 'Mostrar números',
+    'fr' => 'Afficher les chiffres',
+    'ja' => '票数を表示',
+    'zh' => '显示票数数值',
+  ),
+  'show_breakdown' => 
+  array (
+    'en' => 'Show Options Breakdown',
+    'es' => 'Desglose por opciones',
+    'ca' => 'Desglossament per opcions',
+    'pt' => 'Detalhe por opções',
+    'fr' => 'Détail par options',
+    'ja' => '詳細内訳を表示',
+    'zh' => '显示细分项',
+  ),
+  'refresh_after_vote' => 
+  array (
+    'en' => 'Reload After Vote',
+    'es' => 'Recargar después de votar',
+    'ca' => 'Recarregar després de votar',
+    'pt' => 'Recarregar após votar',
+    'fr' => 'Recharger après le vote',
+    'ja' => '投票後に再読み込み',
+    'zh' => '投票后自动刷新',
+  ),
+  'require_registered_user' => 
+  array (
+    'en' => 'Require Registered User',
+    'es' => 'Requerir usuario registrado',
+    'ca' => 'Requerir usuari registrat',
+    'pt' => 'Exigir utilizador registado',
+    'fr' => 'Exiger un utilisateur connecté',
+    'ja' => 'ログインユーザー限定',
+    'zh' => '仅限登录用户投票',
+  ),
+  'security_error' => 
+  array (
+    'en' => 'Security check failed.',
+    'es' => 'Error de comprobación de seguridad.',
+    'ca' => 'Error de comprovació de seguretat.',
+    'pt' => 'Falha na verificação de segurança.',
+    'fr' => 'Échec du contrôle de sécurité.',
+    'ja' => 'セキュリティチェックに失敗しました。',
+    'zh' => '安全验证失败。',
+  ),
+  'ip_not_allowed' => 
+  array (
+    'en' => 'Your IP address is not authorized to vote.',
+    'es' => 'Tu dirección IP no está autorizada para votar.',
+    'ca' => 'La teva adreça IP no està autoritzada per votar.',
+    'pt' => 'O seu endereço IP não está autorizado a votar.',
+    'fr' => 'Votre adresse IP n\'est pas autorisée à voter.',
+    'ja' => 'このIPアドレスからの投票は許可されていません。',
+    'zh' => '您的IP地址未被授权投票。',
+  ),
+  'invalid_option' => 
+  array (
+    'en' => 'Invalid option.',
+    'es' => 'Opción no válida.',
+    'ca' => 'Opció no vàlida.',
+    'pt' => 'Opção inválida.',
+    'fr' => 'Option non valide.',
+    'ja' => '無効な選択肢です。',
+    'zh' => '无效选项。',
+  ),
+  'voter_limit_reached' => 
+  array (
+    'en' => 'Voter limit has been reached.',
+    'es' => 'Se ha alcanzado el límite de votantes.',
+    'ca' => 'S\'ha assolit el límit de votants.',
+    'pt' => 'O limite de votantes foi atingido.',
+    'fr' => 'Le nombre maximal de votants a été atteint.',
+    'ja' => '投票者数の上限に達しました。',
+    'zh' => '已达到投票人数上限。',
+  ),
+  'already_voted_option' => 
+  array (
+    'en' => 'You have already voted for this option.',
+    'es' => 'Ya has votado por esta opción.',
+    'ca' => 'Ja has votat per aquesta opció.',
+    'pt' => 'Já votou nesta opção.',
+    'fr' => 'Vous avez déjà voté pour cette option.',
+    'ja' => 'この選択肢には既に投票済みです。',
+    'zh' => '您已为该选项投过票。',
+  ),
+  'votes_exhausted' => 
+  array (
+    'en' => 'You have exhausted your %d allowed votes.',
+    'es' => 'Has agotado tus %d votos permitidos.',
+    'ca' => 'Has esgotat els teus %d vots permesos.',
+    'pt' => 'Esgotou os seus %d votos permitidos.',
+    'fr' => 'Vous avez épuisé vos %d votes autorisés.',
+    'ja' => '許可された %d 票を使い切りました。',
+    'zh' => '您已用完允许的 %d 次投票机会。',
+  ),
+  'type_votes_exhausted' => 
+  array (
+    'en' => 'You have exhausted your %d votes for type "%s".',
+    'es' => 'Has agotado tus %d votos para el tipo "%s".',
+    'ca' => 'Has esgotat els teus %d vots per al tipus "%s".',
+    'pt' => 'Esgotou os seus %d votos para o tipo "%s".',
+    'fr' => 'Vous avez épuisé vos %d votes pour le type « %s ».',
+    'ja' => 'タイプ「%2$s」の投票可能数（%1$d票）を使い切りました。',
+    'zh' => '您已用完针对类型“%2$s”的 %1$d 次投票机会。',
+  ),
+  'category_votes_exhausted' => 
+  array (
+    'en' => 'You have exhausted your %d votes for category "%s".',
+    'es' => 'Has agotado tus %d votos para la categoría "%s".',
+    'ca' => 'Has esgotat els teus %d vots per a la categoría "%s".',
+    'pt' => 'Esgotou os seus %d votos para a categoria "%s".',
+    'fr' => 'Vous avez épuisé vos %d votes pour la catégorie « %s ».',
+    'ja' => 'カテゴリ「%2$s」の投票可能数（%1$d票）を使い切りました。',
+    'zh' => '您已用完针对分类“%2$s”的 %1$d 次投票机会。',
+  ),
+  'filter_type_category' => 
+  array (
+    'en' => ' for type "%s" and category "%s"',
+    'es' => ' para tipo "%s" y categoría "%s"',
+    'ca' => ' per al tipus "%s" i la categoria "%s"',
+    'pt' => ' para o tipo "%s" e a categoria "%s"',
+    'fr' => ' pour le type « %s » et la catégorie « %s »',
+    'ja' => '（タイプ「%s」、カテゴリ「%s」）',
+    'zh' => '（针对类型“%s”与分类“%s”）',
+  ),
+  'filter_type' => 
+  array (
+    'en' => ' for type "%s"',
+    'es' => ' para tipo "%s"',
+    'ca' => ' per al tipus "%s"',
+    'pt' => ' para o tipo "%s"',
+    'fr' => ' pour le type « %s »',
+    'ja' => '（タイプ「%s」）',
+    'zh' => '（针对类型“%s”）',
+  ),
+  'filter_category' => 
+  array (
+    'en' => ' for category "%s"',
+    'es' => ' para categoría "%s"',
+    'ca' => ' per a la categoria "%s"',
+    'pt' => ' para a categoria "%s"',
+    'fr' => ' pour la catégorie « %s »',
+    'ja' => '（カテゴリ「%s」）',
+    'zh' => '（针对分类“%s”）',
+  ),
+);

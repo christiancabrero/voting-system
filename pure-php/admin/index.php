@@ -4,6 +4,7 @@
  */
 
 require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/../includes/Database.php';
 require_once __DIR__ . '/../includes/Storage.php';
 require_once __DIR__ . '/../includes/Queue.php';
@@ -56,7 +57,8 @@ $recentVotes = $pdo->query("
     <div class="vs-top-bar">
         <a href="../" class="vs-admin-link">&larr; Back to Public Voting Page</a>
         <div>
-            <span style="font-weight: 600; color: #4b5563;">Standalone Pure PHP Edition v2.0</span>
+            <span style="font-weight: 600; color: #4b5563; margin-right: 15px;">Standalone Pure PHP Edition v2.0</span>
+            <a href="?logout=1" class="vs-btn-sm vs-btn-danger" style="padding: 4px 10px; font-size: 13px;">Sign Out</a>
         </div>
     </div>
 
@@ -111,7 +113,7 @@ $recentVotes = $pdo->query("
                 </div>
             </div>
 
-            <div style="display: flex; gap: 20px; align-items: center; margin-top: 15px;">
+            <div style="display: flex; gap: 20px; align-items: center; margin-top: 15px; flex-wrap: wrap;">
                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
                     <input type="checkbox" name="voting_open" value="1" <?php echo $isOpen ? 'checked' : ''; ?> onchange="this.form.submit()">
                     <span>Voting is Open</span>
@@ -120,6 +122,11 @@ $recentVotes = $pdo->query("
                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
                     <input type="checkbox" name="closed_show_participants" value="1" <?php echo $showParticipants ? 'checked' : ''; ?> onchange="this.form.submit()">
                     <span>Show contestants when voting is closed</span>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" name="closed_blur_participants" value="1" <?php echo Storage::getClosedBlurParticipants() ? 'checked' : ''; ?> onchange="this.form.submit()">
+                    <span>Blur contestants when voting is closed</span>
                 </label>
             </div>
         </form>

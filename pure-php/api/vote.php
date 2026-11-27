@@ -44,7 +44,7 @@ if (!Voter::verifyCsrfToken($csrfToken, $deviceId)) {
     http_response_code(403);
     echo json_encode([
         'success' => false,
-        'error' => I18n::t('invalid_csrf')
+        'error' => I18n::t('csrf_error')
     ]);
     exit;
 }
