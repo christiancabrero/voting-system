@@ -1,4 +1,6 @@
-# Voting System - PHP & WordPress Plugin
+# Voting System
+
+## Versión PHP Puro y Versión Plugin de WordPress
 
 [![Versión PHP](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
@@ -18,25 +20,36 @@
 - 🇬🇧 **[English Documentation](README.md)**
 - 🇪🇸 **[Documentación en Español (Actual)](README.es.md)**
 - 🇯🇵 **[日本語ドキュメント](README.ja.md)**
+- 🇨🇳 **[中文文档](README.zh.md)**
 
 ---
 
 ## 📸 Muestra Visual (Ambas Versiones)
 
 ### 🌟 1. Edición Plugin para WordPress (`v3.4.0`)
-| Vista | Descripción | Captura de Pantalla |
-| :--- | :--- | :--- |
-| **01. Frontend Abierto (Modo Simple)** | 1 voto global disponible por votante, cuadrícula responsive | ![WP Frontend Abierto](screenshots/01-wp-frontend-open-simple-mode.png) |
-| **02. Estado tras Votar (Voto Agotado)** | Candidato marcado como "✓ Votado", botones restantes deshabilitados | ![WP Voto Emitido](screenshots/02-wp-vote-cast-exhausted-state.png) |
-| **03. Votaciones Cerradas con Participantes** | Banner de aviso visible mientras los participantes siguen expuestos | ![WP Votaciones Cerradas](screenshots/03-wp-voting-closed-participants-visible.png) |
-| **04. Switch Backend Modo Simple / Avanzado** | Tarjetas interactivas que ocultan opciones complejas de categoría | ![WP Switch Backend](screenshots/04-wp-backend-simple-mode-switcher.png) |
-| **05. Guía de Caché en el Backend** | Documentación integrada para configuración con plugins de caché | ![WP Guía de Caché](screenshots/05-wp-backend-cache-compatibility-guide.png) |
+
+![01. Frontend Abierto (Modo Simple)](screenshots/01-wp-frontend-open-simple-mode.png)
+*01. Frontend Abierto (Modo Simple) — 1 voto global disponible por votante, cuadrícula responsive*
+
+![02. Estado tras Votar (Voto Agotado)](screenshots/02-wp-vote-cast-exhausted-state.png)
+*02. Estado tras Votar (Voto Agotado) — Candidato marcado como "✓ Votado", botones restantes deshabilitados*
+
+![03. Votaciones Cerradas con Participantes](screenshots/03-wp-voting-closed-participants-visible.png)
+*03. Votaciones Cerradas con Participantes — Banner de aviso visible mientras los participantes siguen expuestos*
+
+![04. Switch Backend Modo Simple / Avanzado](screenshots/04-wp-backend-simple-mode-switcher.png)
+*04. Switch Backend Modo Simple / Avanzado — Tarjetas interactivas que ocultan opciones complejas de categoría*
+
+![05. Guía de Caché en el Backend](screenshots/05-wp-backend-cache-compatibility-guide.png)
+*05. Guía de Caché en el Backend — Documentación integrada para configuración con plugins de caché*
 
 ### ⚡ 2. Edición PHP Puro de Alta Concurrencia (`v2.0.0`)
-| Vista | Descripción | Captura de Pantalla |
-| :--- | :--- | :--- |
-| **06. Frontend Público Standalone** | Interfaz reactiva ultraligera con selector de idioma (EN/ES/CA) | ![Pure PHP Frontend](screenshots/06-pure-php-frontend-live.png) |
-| **07. Panel de Administración Web** | Estado de cola en tiempo real, switch de modo, ranking y auditoría | ![Pure PHP Admin](screenshots/07-pure-php-admin-dashboard.png) |
+
+![06. Frontend Público Standalone](screenshots/06-pure-php-frontend-live.png)
+*06. Frontend Público Standalone — Interfaz reactiva ultraligera con selector de idioma (EN/ES/CA)*
+
+![07. Panel de Administración Web](screenshots/07-pure-php-admin-dashboard.png)
+*07. Panel de Administración Web — Estado de cola en tiempo real, switch de modo, ranking y auditoría*
 
 ---
 
@@ -51,7 +64,8 @@ voting-system/
 │   ├── voting-system.php      # Archivo principal del plugin de WordPress
 │   ├── README.md              # Documentación en Inglés
 │   ├── README.es.md           # Documentación en Español
-│   └── README.ja.md           # Documentación en Japonés
+│   ├── README.ja.md           # Documentación en Japonés
+│   └── README.zh.md           # Documentación en Chino
 ├── pure-php/                  # Edición Standalone en PHP Puro (v2.0.0)
 │   ├── api/                   # Endpoints de voto, estado y resultados
 │   ├── admin/                 # Panel de administración web independiente
@@ -61,10 +75,12 @@ voting-system/
 │   ├── index.php              # Interfaz de votación pública (Tema Burdeos Concurso)
 │   ├── README.md              # Documentación en Inglés
 │   ├── README.es.md           # Documentación en Español
-│   └── README.ja.md           # Documentación en Japonés
+│   ├── README.ja.md           # Documentación en Japonés
+│   └── README.zh.md           # Documentación en Chino
 ├── README.md                  # Índice general en Inglés
 ├── README.es.md               # Índice general en Español
-└── README.ja.md               # Índice general en Japonés
+├── README.ja.md               # Índice general en Japonés
+└── README.zh.md               # Índice general en Chino
 ```
 
 ---

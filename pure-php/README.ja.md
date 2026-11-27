@@ -4,6 +4,16 @@
 
 ---
 
+## 📸 スクリーンショット
+
+![01. リアクティブな公開投票画面](screenshots/01-pure-php-frontend.png)
+*01. リアクティブな公開投票画面*
+
+![02. Web管理コンソール & リアルタイムキュー監視](screenshots/02-pure-php-admin-dashboard.png)
+*02. Web管理コンソール & リアルタイムキュー監視*
+
+---
+
 ## 🚀 アーキテクチャの特長
 
 ```

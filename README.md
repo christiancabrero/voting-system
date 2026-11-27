@@ -1,4 +1,6 @@
-# Voting System - PHP & WordPress Plugin
+# Voting System
+
+## Pure PHP version & WordPress Plugin version
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
@@ -13,30 +15,41 @@
 
 ---
 
-## 📖 Translations / Documentación / ドキュメント
+## 📖 Translations / Documentación / ドキュメント / 文档
 
 - 🇬🇧 **[English Documentation (Current)](README.md)**
 - 🇪🇸 **[Documentación en Español](README.es.md)**
 - 🇯🇵 **[日本語ドキュメント](README.ja.md)**
+- 🇨🇳 **[中文文档](README.zh.md)**
 
 ---
 
 ## 📸 Visual Showcase (Both Editions)
 
 ### 🌟 1. WordPress Plugin Edition (`v3.4.0`)
-| View | Description | Screenshot |
-| :--- | :--- | :--- |
-| **01. Frontend Open (Simple Mode)** | 1 global vote available per voter, responsive grid | ![WP Frontend Open](screenshots/01-wp-frontend-open-simple-mode.png) |
-| **02. Post-Vote Exhausted State** | Voted candidate marked as "✓ Voted", remaining buttons locked | ![WP Vote Cast](screenshots/02-wp-vote-cast-exhausted-state.png) |
-| **03. Closed Voting with Participants** | Status notice banner displayed while contestants remain visible | ![WP Voting Closed](screenshots/03-wp-voting-closed-participants-visible.png) |
-| **04. Admin Simple / Advanced Switch** | Interactive mode cards hiding complex category options | ![WP Admin Switcher](screenshots/04-wp-backend-simple-mode-switcher.png) |
-| **05. Cache Compatibility Guide** | In-admin performance and caching setup documentation | ![WP Cache Guide](screenshots/05-wp-backend-cache-compatibility-guide.png) |
+
+![01. Frontend Open (Simple Mode)](screenshots/01-wp-frontend-open-simple-mode.png)
+*01. Frontend Open (Simple Mode) — 1 global vote available per voter, responsive grid*
+
+![02. Post-Vote Exhausted State](screenshots/02-wp-vote-cast-exhausted-state.png)
+*02. Post-Vote Exhausted State — Voted candidate marked as "✓ Voted", remaining buttons locked*
+
+![03. Closed Voting with Participants](screenshots/03-wp-voting-closed-participants-visible.png)
+*03. Closed Voting with Participants — Status notice banner displayed while contestants remain visible*
+
+![04. Admin Simple / Advanced Switch](screenshots/04-wp-backend-simple-mode-switcher.png)
+*04. Admin Simple / Advanced Switch — Interactive mode cards hiding complex category options*
+
+![05. Cache Compatibility Guide](screenshots/05-wp-backend-cache-compatibility-guide.png)
+*05. Cache Compatibility Guide — In-admin performance and caching setup documentation*
 
 ### ⚡ 2. Pure PHP High-Concurrency Edition (`v2.0.0`)
-| View | Description | Screenshot |
-| :--- | :--- | :--- |
-| **06. Standalone Public UI** | Lightweight reactive frontend with language switcher (EN/ES/CA) | ![Pure PHP Frontend](screenshots/06-pure-php-frontend-live.png) |
-| **07. Web Administration Console** | Live queue status, mode switcher, contestant ranking & audit log | ![Pure PHP Admin](screenshots/07-pure-php-admin-dashboard.png) |
+
+![06. Standalone Public UI](screenshots/06-pure-php-frontend-live.png)
+*06. Standalone Public UI — Lightweight reactive frontend with language switcher (EN/ES/CA)*
+
+![07. Web Administration Console](screenshots/07-pure-php-admin-dashboard.png)
+*07. Web Administration Console — Live queue status, mode switcher, contestant ranking & audit log*
 
 ---
 
@@ -51,7 +64,8 @@ voting-system/
 │   ├── voting-system.php      # Main WordPress plugin entrypoint
 │   ├── README.md              # English documentation
 │   ├── README.es.md           # Spanish documentation
-│   └── README.ja.md           # Japanese documentation
+│   ├── README.ja.md           # Japanese documentation
+│   └── README.zh.md           # Chinese documentation
 ├── pure-php/                  # Standalone Pure PHP Edition (v2.0.0)
 │   ├── api/                   # High-concurrency vote, state, and stats endpoints
 │   ├── admin/                 # Standalone web administration console
@@ -61,10 +75,12 @@ voting-system/
 │   ├── index.php              # Public voting interface (Burgundy Competition theme)
 │   ├── README.md              # English documentation
 │   ├── README.es.md           # Spanish documentation
-│   └── README.ja.md           # Japanese documentation
+│   ├── README.ja.md           # Japanese documentation
+│   └── README.zh.md           # Chinese documentation
 ├── README.md                  # Master English project overview
 ├── README.es.md               # Master Spanish project overview
-└── README.ja.md               # Master Japanese project overview
+├── README.ja.md               # Master Japanese project overview
+└── README.zh.md               # Master Chinese project overview
 ```
 
 ---

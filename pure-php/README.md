@@ -6,10 +6,11 @@ Ultra-fast, standalone voting system written in pure PHP (no framework dependenc
 
 ## 📸 Visual Showcase
 
-| View | Screenshot |
-| :--- | :--- |
-| **01. Public Reactive Voting Interface** | ![Pure PHP Public UI](screenshots/01-pure-php-frontend.png) |
-| **02. Web Administration & Live Queue Monitor** | ![Pure PHP Admin Console](screenshots/02-pure-php-admin-dashboard.png) |
+![01. Public Reactive Voting Interface](screenshots/01-pure-php-frontend.png)
+*01. Public Reactive Voting Interface*
+
+![02. Web Administration & Live Queue Monitor](screenshots/02-pure-php-admin-dashboard.png)
+*02. Web Administration & Live Queue Monitor*
 
 ---
 

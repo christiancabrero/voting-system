@@ -4,6 +4,16 @@ Sistema de votaciones ultrarrápido e independiente escrito en PHP puro (sin dep
 
 ---
 
+## 📸 Muestra Visual
+
+![01. Interfaz Pública de Votación Reactiva](screenshots/01-pure-php-frontend.png)
+*01. Interfaz Pública de Votación Reactiva*
+
+![02. Consola de Administración Web y Monitor de Cola en Vivo](screenshots/02-pure-php-admin-dashboard.png)
+*02. Consola de Administración Web y Monitor de Cola en Vivo*
+
+---
+
 ## 🚀 Ventajas de la Arquitectura
 
 ```

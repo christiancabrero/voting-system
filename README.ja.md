@@ -1,4 +1,6 @@
-# Voting System - PHP & WordPress Plugin
+# Voting System
+
+## Pure PHP 版 & WordPress プラグイン版
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-blue.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg)](https://wordpress.org)
@@ -13,30 +15,41 @@
 
 ---
 
-## 📖 言語選択 / Translations / Documentación
+## 📖 言語選択 / Translations / Documentación / 文档
 
 - 🇬🇧 **[English Documentation](README.md)**
 - 🇪🇸 **[Documentación en Español](README.es.md)**
 - 🇯🇵 **[日本語ドキュメント（現在表示中）](README.ja.md)**
+- 🇨🇳 **[中文文档](README.zh.md)**
 
 ---
 
 ## 📸 スクリーンショット一覧（両バージョン）
 
 ### 🌟 1. WordPress プラグイン版 (`v3.4.0`)
-| 画面 | 説明 | スクリーンショット |
-| :--- | :--- | :--- |
-| **01. シンプルモード（投票受付中）** | 1人1票限定、レスポンシブな参加者一覧グリッド | ![WP 受付中](screenshots/01-wp-frontend-open-simple-mode.png) |
-| **02. 投票完了後（上限到達状態）** | 投票した候補者に「✓ Voted」を表示し他ボタンを無効化 | ![WP 投票完了](screenshots/02-wp-vote-cast-exhausted-state.png) |
-| **03. 投票終了（参加者表示維持）** | 告知バナーを表示しつつ参加者情報を閲覧可能に維持 | ![WP 投票終了](screenshots/03-wp-voting-closed-participants-visible.png) |
-| **04. 管理画面 シンプル/アドバンス切替** | 直感的なカード式UIで不要なカテゴリ設定を自動非表示 | ![WP 管理画面](screenshots/04-wp-backend-simple-mode-switcher.png) |
-| **05. 管理画面 キャッシュ最適化ガイド** | WP Super Cache等の最適化手順を管理画面内に内蔵 | ![WP キャッシュガイド](screenshots/05-wp-backend-cache-compatibility-guide.png) |
+
+![01. シンプルモード（投票受付中）](screenshots/01-wp-frontend-open-simple-mode.png)
+*01. シンプルモード（投票受付中） — 1人1票限定、レスポンシブな参加者一覧グリッド*
+
+![02. 投票完了後（上限到達状態）](screenshots/02-wp-vote-cast-exhausted-state.png)
+*02. 投票完了後（上限到達状態） — 投票した候補者に「✓ Voted」を表示し他ボタンを無効化*
+
+![03. 投票終了（参加者表示維持）](screenshots/03-wp-voting-closed-participants-visible.png)
+*03. 投票終了（参加者表示維持） — 告知バナーを表示しつつ参加者情報を閲覧可能に維持*
+
+![04. 管理画面 シンプル/アドバンス切替](screenshots/04-wp-backend-simple-mode-switcher.png)
+*04. 管理画面 シンプル/アドバンス切替 — 直感的なカード式UIで不要なカテゴリ設定を自動非表示*
+
+![05. 管理画面 キャッシュ最適化ガイド](screenshots/05-wp-backend-cache-compatibility-guide.png)
+*05. 管理画面 キャッシュ最適化ガイド — WP Super Cache等の最適化手順を管理画面内に内蔵*
 
 ### ⚡ 2. 高並行処理 Pure PHP 独立版 (`v2.0.0`)
-| 画面 | 説明 | スクリーンショット |
-| :--- | :--- | :--- |
-| **06. スタンドアロン公開画面** | 言語切り替えバー付き（EN/ES/CA）超軽量リアクティブUI | ![Pure PHP フロントエンド](screenshots/06-pure-php-frontend-live.png) |
-| **07. Web管理コンソール** | リアルタイムキュー監視、モード切替、ランキング、監査ログ | ![Pure PHP 管理画面](screenshots/07-pure-php-admin-dashboard.png) |
+
+![06. スタンドアロン公開画面](screenshots/06-pure-php-frontend-live.png)
+*06. スタンドアロン公開画面 — 言語切り替えバー付き（EN/ES/CA）超軽量リアクティブUI*
+
+![07. Web管理コンソール](screenshots/07-pure-php-admin-dashboard.png)
+*07. Web管理コンソール — リアルタイムキュー監視、モード切替、ランキング、監査ログ*
 
 ---
 
@@ -51,7 +64,8 @@ voting-system/
 │   ├── voting-system.php      # WordPress プラグインのエントリーファイル
 │   ├── README.md              # 英語ドキュメント
 │   ├── README.es.md           # スペイン語ドキュメント
-│   └── README.ja.md           # 日本語ドキュメント
+│   ├── README.ja.md           # 日本語ドキュメント
+│   └── README.zh.md           # 中国語ドキュメント
 ├── pure-php/                  # 独立型 Pure PHP 版 (v2.0.0)
 │   ├── api/                   # 投票・状態・統計APIエンドポイント
 │   ├── admin/                 # 独立したWeb管理コンソール
@@ -61,10 +75,12 @@ voting-system/
 │   ├── index.php              # コンクール仕様（ワインレッド）の投票画面
 │   ├── README.md              # 英語ドキュメント
 │   ├── README.es.md           # スペイン語ドキュメント
-│   └── README.ja.md           # 日本語ドキュメント
+│   ├── README.ja.md           # 日本語ドキュメント
+│   └── README.zh.md           # 中国語ドキュメント
 ├── README.md                  # プロジェクト全体概要（英語）
 ├── README.es.md               # プロジェクト全体概要（スペイン語）
-└── README.ja.md               # プロジェクト全体概要（日本語）
+├── README.ja.md               # プロジェクト全体概要（日本語）
+└── README.zh.md               # プロジェクト全体概要（中国語）
 ```
 
 ---

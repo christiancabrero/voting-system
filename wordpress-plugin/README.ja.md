@@ -53,13 +53,20 @@ WordPress向けの高性能投票プラグインです。**シンプルモード
 
 ## 📸 スクリーンショット
 
-| 画面 | ファイル |
-| :--- | :--- |
-| **01. シンプルモード（投票受付中）** | ![フロントエンド受付中](screenshots/01-frontend-open-simple-mode.png) |
-| **02. 投票完了後（投票上限到達状態）** | ![投票完了後](screenshots/02-vote-cast-exhausted-state.png) |
-| **03. 投票終了（参加者表示維持）** | ![投票終了](screenshots/03-voting-closed-participants-visible.png) |
-| **04. 管理画面 シンプル/アドバンス切り替え** | ![管理画面切り替え](screenshots/04-backend-simple-mode-switcher.png) |
-| **05. 管理画面 キャッシュ最適化ガイド** | ![キャッシュガイド](screenshots/05-backend-cache-compatibility-guide.png) |
+![シンプルモード（投票受付中）](screenshots/01-frontend-open-simple-mode.png)
+*01. シンプルモード（投票受付中）*
+
+![投票完了後（投票上限到達状態）](screenshots/02-vote-cast-exhausted-state.png)
+*02. 投票完了後（投票上限到達状態）*
+
+![投票終了（参加者表示維持）](screenshots/03-voting-closed-participants-visible.png)
+*03. 投票終了（参加者表示維持）*
+
+![管理画面 シンプル/アドバンス切り替え](screenshots/04-backend-simple-mode-switcher.png)
+*04. 管理画面 シンプル/アドバンス切り替え*
+
+![管理画面 キャッシュ最適化ガイド](screenshots/05-backend-cache-compatibility-guide.png)
+*05. 管理画面 キャッシュ最適化ガイド*
 
 ---
 

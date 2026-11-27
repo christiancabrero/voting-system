@@ -53,13 +53,20 @@ Plugin de votaciones de alto rendimiento para WordPress que incluye **Modo Simpl
 
 ## 📸 Capturas de Pantalla
 
-| Vista | Captura |
-| :--- | :--- |
-| **01. Frontend en Modo Simple (Abierto)** | ![Frontend Abierto](screenshots/01-frontend-open-simple-mode.png) |
-| **02. Estado tras Votar (Voto Agotado)** | ![Voto Agotado](screenshots/02-vote-cast-exhausted-state.png) |
-| **03. Votaciones Cerradas con Participantes** | ![Votaciones Cerradas](screenshots/03-voting-closed-participants-visible.png) |
-| **04. Switch Backend Modo Simple / Avanzado** | ![Switch Backend](screenshots/04-backend-simple-mode-switcher.png) |
-| **05. Guía de Caché en el Backend** | ![Guía de Caché](screenshots/05-backend-cache-compatibility-guide.png) |
+![Frontend en Modo Simple (Abierto)](screenshots/01-frontend-open-simple-mode.png)
+*01. Frontend en Modo Simple (Abierto)*
+
+![Estado tras Votar (Voto Agotado)](screenshots/02-vote-cast-exhausted-state.png)
+*02. Estado tras Votar (Voto Agotado)*
+
+![Votaciones Cerradas con Participantes](screenshots/03-voting-closed-participants-visible.png)
+*03. Votaciones Cerradas con Participantes*
+
+![Switch Backend Modo Simple / Avanzado](screenshots/04-backend-simple-mode-switcher.png)
+*04. Switch Backend Modo Simple / Avanzado*
+
+![Guía de Caché en el Backend](screenshots/05-backend-cache-compatibility-guide.png)
+*05. Guía de Caché en el Backend*
 
 ---
 

@@ -53,13 +53,20 @@ High-performance voting plugin for WordPress featuring **Simple Mode** (1 vote p
 
 ## 📸 Screenshots
 
-| View | Screenshot |
-| :--- | :--- |
-| **01. Frontend in Simple Mode (Open)** | ![Frontend Open](screenshots/01-frontend-open-simple-mode.png) |
-| **02. Post-Vote State (Votes Exhausted)** | ![Vote Exhausted](screenshots/02-vote-cast-exhausted-state.png) |
-| **03. Closed Voting with Participants Visible** | ![Voting Closed](screenshots/03-voting-closed-participants-visible.png) |
-| **04. Backend Simple / Advanced Mode Switch** | ![Backend Switch](screenshots/04-backend-simple-mode-switcher.png) |
-| **05. Cache Compatibility Guide in Backend** | ![Cache Guide](screenshots/05-backend-cache-compatibility-guide.png) |
+![Frontend in Simple Mode (Open)](screenshots/01-frontend-open-simple-mode.png)
+*01. Frontend in Simple Mode (Open)*
+
+![Post-Vote State (Votes Exhausted)](screenshots/02-vote-cast-exhausted-state.png)
+*02. Post-Vote State (Votes Exhausted)*
+
+![Closed Voting with Participants Visible](screenshots/03-voting-closed-participants-visible.png)
+*03. Closed Voting with Participants Visible*
+
+![Backend Simple / Advanced Mode Switch](screenshots/04-backend-simple-mode-switcher.png)
+*04. Backend Simple / Advanced Mode Switch*
+
+![Cache Compatibility Guide in Backend](screenshots/05-backend-cache-compatibility-guide.png)
+*05. Cache Compatibility Guide in Backend*
 
 ---
 
